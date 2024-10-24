@@ -22,38 +22,41 @@
  <input name="acao" type="hidden" value="alterar"/>
  <input name="id" type="hidden" value="${requestScope.estado.id}"/>
 
- <table>
- <tr>
- <td class="alinharDireita">Nome:</td>
- <td>
- <input name="nome"
- type="text"
- size="20"
- maxlength="30"
- value="${requestScope.estado.nome}"/>
- </td>
- </tr>
- <tr>
- <td class="alinharDireita">Sigla:</td>
- <td>
- <input name="sigla"
- type="text"
- size="3"
- maxlength="2"
- value="${requestScope.estado.sigla}"/>
- </td>
- </tr>
- <tr>
- <td>
- <a href="${cp}/formularios/estados/listagem.jsp">
- Voltar
- </a>
- </td>
- <td class="alinharDireita">
- <input type="submit" value="Alterar"/>
- </td>
- </tr>
- </table>
+    <table>
+    <tr>
+    <td class="alinharDireita">Nome:</td>
+    <td>
+        <input name="nome"
+            type="text"
+            size="20"
+            maxlength="30"
+            value="${requestScope.estado.nome}"/>
+    </td>
+    </tr>
+    
+    <tr>
+    <td class="alinharDireita">Sigla:</td>
+    <td>
+        <input name="sigla"
+            type="text"
+            size="3"
+            maxlength="3"
+            value="${requestScope.estado.sigla}"/>
+    </td>
+    </tr>
+    
+    <tr>
+    <td>
+    <a href="${cp}/formularios/estados/listagem.jsp">
+    Voltar
+    </a>
+        </td>
+            <td class="alinharDireita">
+            <input type="submit" value="Alterar"/>
+        </td>
+    </tr>
+    
+    </table>
 
  </form>
 

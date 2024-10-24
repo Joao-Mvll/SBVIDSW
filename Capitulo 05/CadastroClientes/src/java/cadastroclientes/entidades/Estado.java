@@ -12,7 +12,7 @@ public class Estado {
     
     private int id;
     private String nome;
-    private String sigla;
+    public String sigla;
 
     public int getId() {
         return id;

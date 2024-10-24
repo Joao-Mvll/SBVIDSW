@@ -155,6 +155,8 @@ public class CidadeDAO extends DAO<Cidade>{
     return cidade;
 
     }
+
+   
 }
     
 

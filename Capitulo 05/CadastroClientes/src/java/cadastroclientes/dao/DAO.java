@@ -44,4 +44,5 @@ public abstract class DAO <tipo> {
     public abstract tipo obterPorId(int id) throws SQLException;
     
     
+    
 }

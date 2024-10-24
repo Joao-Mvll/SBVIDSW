@@ -68,6 +68,7 @@
                    size="13"
                    pattern="\d{3}.\d{3}.\d{3}-\d{2}"
                    placeholder="999.999.999-99"
+                   maxlength="15"
                    required/>
         </td>
         </tr>
@@ -129,6 +130,7 @@
                    size="7"
                    pattern="\d{5}-\d{3}"
                    placeholder="99999-999"
+                   maxlength="7"
                    required/>
         </td>
         </tr>

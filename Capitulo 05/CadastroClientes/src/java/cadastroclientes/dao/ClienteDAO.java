@@ -24,7 +24,7 @@ public class ClienteDAO extends DAO<Cliente> {
         
         PreparedStatement stmt = getConnection().prepareStatement(
         "INSERT INTO "+
-        "cliente( nome, sobrenome, datanascimento, cpf, email, logradouro, numero, bairro, cep, cidade ) " +
+        "cliente( nome, sobrenome, datanascimento, cpf, email, logradouro, numero, bairro, cep, cidade_id ) " +
         "VALUES(?,?,?,?,?,?,?,?,?,?);");
         
         stmt.setString(1, obj.getNome());
@@ -242,6 +242,8 @@ public class ClienteDAO extends DAO<Cliente> {
          return cliente;
 
     }
+
+    
 
    
 }

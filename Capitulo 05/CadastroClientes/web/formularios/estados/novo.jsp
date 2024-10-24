@@ -41,7 +41,7 @@
             <input name="sigla"
                    type="text"
                    size="3"
-                   maxlength="2"
+                   maxlength="3"
                    required/>
             </td>
         </tr>
