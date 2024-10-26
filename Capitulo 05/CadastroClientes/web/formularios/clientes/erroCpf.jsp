@@ -16,11 +16,11 @@
 
  <body>
 
-    <h1>Cidade ja existente</h1>
+    <h1>Cpf ja cadastrado</h1>
 
     <tr>
             <td>
-                <a href="${cp}//formularios/cidades/listagem.jsp">
+                <a href="${cp}//formularios/clientes/listagem.jsp">
                 Voltar
                 </a>
             </td>

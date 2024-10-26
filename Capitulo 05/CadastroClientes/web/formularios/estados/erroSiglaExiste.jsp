@@ -1,14 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 
 <html>
 <head>
-<title>Alterar Cliente</title>
- <meta charset="UTF-8">
-  <meta name="viewport"
+<title>Alterar Estado</title>
+<meta charset="UTF-8">
+ <meta name="viewport"
  content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet"
  href="${cp}/css/estilos.css"/>
@@ -16,16 +15,18 @@
 
  <body>
 
-    <h1>Cidade ja existente</h1>
+ <h1>A sigla ja existe</h1>
 
-    <tr>
+ <tr>
             <td>
-                <a href="${cp}//formularios/cidades/listagem.jsp">
+                <a href="${cp}/formularios/estados/listagem.jsp">
                 Voltar
                 </a>
             </td>
-    </tr>
-
+            
+           
+            
+</tr>
 
  </body>
 

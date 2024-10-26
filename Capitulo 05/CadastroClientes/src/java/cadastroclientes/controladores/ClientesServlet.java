@@ -3,6 +3,7 @@ package cadastroclientes.controladores;
 import cadastroclientes.dao.ClienteDAO;
 import cadastroclientes.entidades.Cidade;
 import cadastroclientes.entidades.Cliente;
+import cadastroclientes.servicos.ClienteServices;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -32,6 +33,7 @@ public class ClientesServlet extends HttpServlet {
         ClienteDAO dao = null;
         RequestDispatcher disp = null;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        ClienteServices clienteServices = new ClienteServices();
 
         try {
 
@@ -48,29 +50,38 @@ public class ClientesServlet extends HttpServlet {
                 String numero = request.getParameter( "numero" );
                 String bairro = request.getParameter( "bairro" );
                 String cep = request.getParameter( "cep" );
-                int idCidade = Integer.parseInt(
-                        request.getParameter( "idCidade" ) );
+                int idCidade = Integer.parseInt(request.getParameter( "idCidade" ) );
 
-                Cidade ci = new Cidade();
-                ci.setId( idCidade );
+                if(clienteServices.existeCpf(cpf)){
+                    disp = request.getRequestDispatcher("formularios/clientes/erroCpf.jsp");
+                    
+                }else if(clienteServices.existeEmail(email)){
+                    disp = request.getRequestDispatcher("formularios/clientes/erroEmail.jsp");
+                    
+                }else{
+                    
+                    Cidade ci = new Cidade();
+                    ci.setId( idCidade );
 
-                Cliente c = new Cliente();
-                c.setNome( nome );
-                c.setSobrenome( sobrenome );
-                c.setDataNascimento( Date.valueOf(
-                        LocalDate.parse( dataNascimento, dtf ) ) );
-                c.setCpf( cpf );
-                c.setEmail( email );
-                c.setLogradouro( logradouro );
-                c.setNumero( numero );
-                c.setBairro( bairro );
-                c.setCep( cep );
-                c.setCidade( ci );
+                    Cliente c = new Cliente();
+                    c.setNome( nome );
+                    c.setSobrenome( sobrenome );
+                    c.setDataNascimento( Date.valueOf(LocalDate.parse( dataNascimento, dtf ) ) );
+                    c.setCpf( cpf );
+                    c.setEmail( email );
+                    c.setLogradouro( logradouro );
+                    c.setNumero( numero );
+                    c.setBairro( bairro );
+                    c.setCep( cep );
+                    c.setCidade( ci );
 
-                dao.salvar( c );
+                    dao.salvar( c );
 
-                disp = request.getRequestDispatcher(
-                        "/formularios/clientes/listagem.jsp" );
+                    disp = request.getRequestDispatcher( "/formularios/clientes/listagem.jsp" );
+                    
+                }
+                
+                
 
             } else if ( acao.equals( "alterar" ) ) {
 
@@ -84,30 +95,40 @@ public class ClientesServlet extends HttpServlet {
                 String numero = request.getParameter( "numero" );
                 String bairro = request.getParameter( "bairro" );
                 String cep = request.getParameter( "cep" );
-                int idCidade = Integer.parseInt(
-                        request.getParameter( "idCidade" ) );
+                int idCidade = Integer.parseInt(request.getParameter( "idCidade" ) );
+                
+                
+                if(clienteServices.existeCpf(cpf)){
+                    disp = request.getRequestDispatcher("formularios/clientes/erroCpf.jsp");
+                    
+                }else if(clienteServices.existeEmail(email)){
+                    disp = request.getRequestDispatcher("formularios/clientes/erroEmail.jsp");
+                    
+                }else{
+                    
+                    Cidade ci = new Cidade();
+                    ci.setId( idCidade );
 
-                Cidade ci = new Cidade();
-                ci.setId( idCidade );
+                    Cliente c = new Cliente();
+                    c.setId( id );
+                    c.setNome( nome );
+                    c.setSobrenome( sobrenome );
+                    c.setDataNascimento( Date.valueOf(LocalDate.parse( dataNascimento, dtf ) ) );
+                    c.setCpf( cpf );
+                    c.setEmail( email );
+                    c.setLogradouro( logradouro );
+                    c.setNumero( numero );
+                    c.setBairro( bairro );
+                    c.setCep( cep );
+                    c.setCidade( ci );
 
-                Cliente c = new Cliente();
-                c.setId( id );
-                c.setNome( nome );
-                c.setSobrenome( sobrenome );
-                c.setDataNascimento( Date.valueOf(
-                        LocalDate.parse( dataNascimento, dtf ) ) );
-                c.setCpf( cpf );
-                c.setEmail( email );
-                c.setLogradouro( logradouro );
-                c.setNumero( numero );
-                c.setBairro( bairro );
-                c.setCep( cep );
-                c.setCidade( ci );
+                    dao.atualizar( c );
 
-                dao.atualizar( c );
+                    disp = request.getRequestDispatcher("/formularios/clientes/listagem.jsp" );
+                    
+                }
 
-                disp = request.getRequestDispatcher(
-                        "/formularios/clientes/listagem.jsp" );
+                
 
             } else if ( acao.equals( "excluir" ) ) {
 

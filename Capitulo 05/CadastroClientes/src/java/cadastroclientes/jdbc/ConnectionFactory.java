@@ -11,7 +11,7 @@ public class ConnectionFactory {
     
     public static Connection getConnection() throws SQLException{
         
-        String url = "jdbc:mariadb://localhost/cadastro_cliente";
+        String url = "jdbc:mariadb://localhost/cadastro_clientes";
         String user = "root";
         String password = "";
         

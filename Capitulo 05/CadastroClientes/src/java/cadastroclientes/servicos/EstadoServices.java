@@ -29,8 +29,25 @@ public class EstadoServices {
         }
 
         return lista;
+        
+        
+        
 
  }
 
+    public boolean existeSigla(String sigla) throws SQLException{
+        
+        EstadoDAO dao = new EstadoDAO();
+        List<Estado> estados = dao.listarTodos();
+        
+        for( Estado estado : estados){
+            if(estado.getSigla().equalsIgnoreCase(sigla)){
+                return true;
+            }
+            
+        }
+        return false;
+    }
+    
     
 }

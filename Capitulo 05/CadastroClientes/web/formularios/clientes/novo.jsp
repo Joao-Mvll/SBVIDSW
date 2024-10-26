@@ -130,7 +130,7 @@
                    size="7"
                    pattern="\d{5}-\d{3}"
                    placeholder="99999-999"
-                   maxlength="7"
+                   maxlength="9"
                    required/>
         </td>
         </tr>

@@ -2,6 +2,7 @@ package cadastroclientes.controladores;
 
 import cadastroclientes.dao.EstadoDAO;
 import cadastroclientes.entidades.Estado;
+import cadastroclientes.servicos.EstadoServices;
 import java.io.IOException;
 import java.sql.*;
 import jakarta.servlet.RequestDispatcher;
@@ -25,10 +26,12 @@ import java.util.List;
        String acao = request.getParameter( "acao" );
        EstadoDAO dao = null;
        RequestDispatcher disp = null;
+       EstadoServices estadoServices = new EstadoServices(); 
         
        try {
 
             dao = new EstadoDAO();
+            
 
             if ( acao.equals( "inserir" ) ) {
 
@@ -38,6 +41,9 @@ import java.util.List;
                 if(sigla.length() > 2){
                     
                     disp = request.getRequestDispatcher("/formularios/estados/erro.jsp" );
+                    
+                }else  if (estadoServices.existeSigla(sigla)) {
+                    disp = request.getRequestDispatcher("/formularios/estados/erroSiglaExiste.jsp");
                     
                 }else{
                     
@@ -58,10 +64,12 @@ import java.util.List;
             String nome = request.getParameter( "nome" );
             String sigla = request.getParameter( "sigla" );
      
-            if(sigla.length() > 2){
-                               
-                disp = request.getRequestDispatcher("/formularios/estados/erroSigla.jsp" );
-           
+            if(sigla.length() > 2){        
+                    disp = request.getRequestDispatcher("/formularios/estados/erro.jsp" );
+                    
+            }else  if (estadoServices.existeSigla(sigla)) {
+                    disp = request.getRequestDispatcher("/formularios/estados/erroSiglaExiste.jsp");
+                    
             }else{
                 Estado e = new Estado();
                 e.setId( id );
