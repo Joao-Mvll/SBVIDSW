@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jogom/Documents/NetBeansProjects/Capitulo%203/CadastroClientes/src/java/cadastroclientes/servicos/EstadoServices.java</file>
-            <file>file:/C:/Users/jogom/Documents/NetBeansProjects/Capitulo%203/CadastroClientes/web/formularios/estados/novo.jsp</file>
-            <file>file:/C:/Users/jogom/Documents/NetBeansProjects/Capitulo%203/CadastroClientes/src/java/cadastroclientes/controladores/EstadosServlet.java</file>
-            <file>file:/C:/Users/jogom/Documents/NetBeansProjects/Capitulo%203/CadastroClientes/web/formularios/estados/listagem.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/CadastroClientes/src/java/cadastroclientes/controladores/CidadesServlet.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/CadastroClientes/src/java/cadastroclientes/servicos/EstadoServices.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/CadastroClientes/web/formularios/clientes/novo.jsp</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/CadastroClientes/src/java/cadastroclientes/servicos/ClienteServices.java</file>
+            <file>file:/C:/Users/user/Documents/NetBeansProjects/CadastroClientes/src/java/cadastroclientes/controladores/ClientesServlet.java</file>
         </group>
     </open-files>
 </project-private>

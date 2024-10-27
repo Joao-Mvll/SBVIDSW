@@ -19,7 +19,7 @@
 
  <tr>
             <td>
-                <a href="${cp}/index.jsp">
+                <a href="${cp}//formularios/estados/listagem.jsp">
                 Voltar
                 </a>
             </td>
