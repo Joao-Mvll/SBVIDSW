@@ -1,4 +1,3 @@
-
 package locacaodvds.jdbc;
 
 import java.sql.DriverManager;
