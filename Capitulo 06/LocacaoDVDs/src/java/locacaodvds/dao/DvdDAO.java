@@ -29,15 +29,17 @@ public class DvdDAO extends DAO<Dvd>{
         
         PreparedStatement stmt = getConnection().prepareStatement(
         "INSERT INTO "+
-        "dvd( titulo, ano_lancamento, ator_principal_id, ator_coadjuvante_id, data_lancamento, duracao_minutos, classificacao_id, genero_id) " +
+        "dvd( titulo, ano_lancamento, ator_principal_id, "
+                + "ator_coadjuvante_id, data_lancamento, duracao_minutos, "
+                + "classificacao_etaria_id, genero_id) " +
         "VALUES(?,?,?,?,?,?,?,?);");
         
         stmt.setString(1, obj.getTitulo());
-        stmt.setString(2, obj.getAno_lancamento());
+        stmt.setInt(2, obj.getAno_lancamento());
         stmt.setInt(3, obj.getAtor_principal().getId());
         stmt.setInt(4, obj.getAtor_coadjuvante().getId());
         stmt.setDate(5, obj.getData_lancamento());
-        stmt.setString(6, obj.getDuracao_minutos());
+        stmt.setInt(6, obj.getDuracao_minutos());
         stmt.setInt(7, obj.getClassificacao().getId());
         stmt.setInt(8, obj.getGenero().getId());
             
@@ -60,7 +62,7 @@ public class DvdDAO extends DAO<Dvd>{
             " ator_coadjuvante_id = ? " +
             " data_lancamento = ? " +
             " duracao_minutos = ? " +
-            " classificacao_id = ? " +
+            " classificacao_etaria_id = ? " +
             " genero_id = ? " +
             " WHERE" +
             " ID = ?; "); 
@@ -69,11 +71,11 @@ public class DvdDAO extends DAO<Dvd>{
         
         
         stmt.setString(1, obj.getTitulo());
-        stmt.setString(2, obj.getAno_lancamento());
+        stmt.setInt(2, obj.getAno_lancamento());
         stmt.setInt(3, obj.getAtor_principal().getId());
         stmt.setInt(4, obj.getAtor_coadjuvante().getId());
         stmt.setDate(5, obj.getData_lancamento());
-        stmt.setString(6, obj.getDuracao_minutos());
+        stmt.setInt(6, obj.getDuracao_minutos());
         stmt.setInt(7, obj.getClassificacao().getId());
         stmt.setInt(8, obj.getGenero().getId());
         
@@ -141,9 +143,9 @@ public class DvdDAO extends DAO<Dvd>{
 
         d.setId( rs.getInt( "idDvd" ) );
         d.setTitulo( rs.getString( "tituloDvd" ) );
-        d.setAno_lancamento( rs.getString( "anoLancamentoDvd" ) );
+        d.setAno_lancamento( rs.getInt( "anoLancamentoDvd" ) );
         d.setData_lancamento( rs.getDate( "dataLancamentoDvd" ) );
-        d.setDuracao_minutos( rs.getString( "duracaoMinutosDvd" ) );
+        d.setDuracao_minutos( rs.getInt( "duracaoMinutosDvd" ) );
         d.setAtor_coadjuvante( a_coadjuvante );
         d.setAtor_principal( a_principal );
         d.setGenero(g);
@@ -217,9 +219,9 @@ public class DvdDAO extends DAO<Dvd>{
 
         dvd.setId( rs.getInt( "idDvd" ) );
         dvd.setTitulo( rs.getString( "tituloDvd" ) );
-        dvd.setAno_lancamento( rs.getString( "anoLancamentoDvd" ) );
+        dvd.setAno_lancamento( rs.getInt( "anoLancamentoDvd" ) );
         dvd.setData_lancamento( rs.getDate( "dataLancamentoDvd" ) );
-        dvd.setDuracao_minutos( rs.getString( "duracaoMinutosDvd" ) );
+        dvd.setDuracao_minutos( rs.getInt( "duracaoMinutosDvd" ) );
         dvd.setAtor_coadjuvante( a_coadjuvante );
         dvd.setAtor_principal( a_principal );
         dvd.setGenero(g);

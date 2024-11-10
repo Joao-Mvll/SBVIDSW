@@ -27,28 +27,12 @@ public class TesteDAO {
         
         /*Ator ator = new Ator();
         
-        ator.setNome("brad");
-        ator.setSobrenome("pit");
-        ator.setData_estreia(java.sql.Date.valueOf("2024-11-01"));
-        AtorDAO dao = null;*/
+        ator.setNome("Morgan");
+        ator.setSobrenome("Freeman");
+        ator.setData_estreia(java.sql.Date.valueOf("2012-01-11"));
+        AtorDAO dao = null;
         
-        AtorServices atorServices = new AtorServices();
-        List<Ator> atores = atorServices.getTodos();
-        
-
-        if(atores.isEmpty()){
-            System.out.println("Nenhum ator");
-        }else{
-            for(Ator ator : atores) {
-                System.out.println("ID: " + ator.getId() + ", Nome: " + ator.getNome() + " " + ator.getSobrenome() + 
-                ", Data de Estreia: " + ator.getData_estreia()); 
-            }
-        }
-        
-        
-        
-        
-        /*try{
+        try{
             dao = new AtorDAO();   
             dao.salvar(ator);
                     
@@ -68,7 +52,27 @@ public class TesteDAO {
                     }
                     
                 }                   
-            }*/
+            }
+        
+        */
+        
+        AtorServices atorServices = new AtorServices();
+        List<Ator> atores = atorServices.getTodos();
+        
+
+        if(atores.isEmpty()){
+            System.out.println("Nenhum ator");
+        }else{
+            for(Ator ator : atores) {
+                System.out.println("ID: " + ator.getId() + ", Nome: " + ator.getNome() + " " + ator.getSobrenome() + 
+                ", Data de Estreia: " + ator.getData_estreia()); 
+            }
+        }
+        
+        
+        
+        
+        
         
         
         

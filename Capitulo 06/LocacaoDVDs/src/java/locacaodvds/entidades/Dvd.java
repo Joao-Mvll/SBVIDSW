@@ -14,11 +14,11 @@ public class Dvd {
     
     private int id;
     private String titulo;
-    private String ano_lancamento;
+    private int ano_lancamento;
     private Ator ator_principal;
     private Ator ator_coadjuvante;
     private Date data_lancamento;
-    private String duracao_minutos;
+    private int duracao_minutos;
     private ClassificacaoEtaria classificacao;
     private Genero genero;
 
@@ -38,13 +38,6 @@ public class Dvd {
         this.titulo = titulo;
     }
 
-    public String getAno_lancamento() {
-        return ano_lancamento;
-    }
-
-    public void setAno_lancamento(String ano_lancamento) {
-        this.ano_lancamento = ano_lancamento;
-    }
 
     public Ator getAtor_principal() {
         return ator_principal;
@@ -70,14 +63,6 @@ public class Dvd {
         this.data_lancamento = data_lancamento;
     }
 
-    public String getDuracao_minutos() {
-        return duracao_minutos;
-    }
-
-    public void setDuracao_minutos(String duracao_minutos) {
-        this.duracao_minutos = duracao_minutos;
-    }
-
 
     public Genero getGenero() {
         return genero;
@@ -93,6 +78,22 @@ public class Dvd {
 
     public void setClassificacao(ClassificacaoEtaria classificacao) {
         this.classificacao = classificacao;
+    }
+
+    public int getAno_lancamento() {
+        return ano_lancamento;
+    }
+
+    public void setAno_lancamento(int ano_lancamento) {
+        this.ano_lancamento = ano_lancamento;
+    }
+
+    public int getDuracao_minutos() {
+        return duracao_minutos;
+    }
+
+    public void setDuracao_minutos(int duracao_minutos) {
+        this.duracao_minutos = duracao_minutos;
     }
 
     

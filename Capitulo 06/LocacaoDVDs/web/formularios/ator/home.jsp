@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 30 de out. de 2024, 14:07:12
-    Author     : bv3024903
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
@@ -44,7 +38,7 @@
                         <ul class="navbar-nav me-auto flex-row">
 
                             <li class="nav-item me-3">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="${cp}/index.jsp">Home</a>
                             </li>
                             <li class="nav-item me-3">
                                 <a class="nav-link" href="${cp}/formularios/dvd/home.jsp">Dvd</a>
@@ -78,42 +72,42 @@
 
             </nav>
         <!-- Nav bar -->
-
-        <div class="container mt-4 border" >
+        
+        <div class="d-flex justify-content-center" >
+        <h1 > Ator </h1>
+        </div>
+        
+        <div class="container" >
             <div class="row">
-                <!-- Imagem à esquerda -->
-                <div class="col-lg-4 d-flex justify-content-center align-items-center m-0">
-                    <img src="${cp}/imgs/bg.png" alt="Imagem Descrição" class="img-fluid">
-                </div>
                 
-                <!-- Caixas de Texto à direita -->
-                <div class="col-lg-8 d-flex justify-content-center my-5 align-items-center">
-                    <div class="row">
+                <!-- Caixas de Texto -->
+                <div class="col-lg-12 my-4 d-flex justify-content-center my-5 align-items-center">
+                    <div class="row p-5">
                         <!-- Primeira linha de caixas -->
                         <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/ator/home.jsp">
+                            <a href="${cp}/formularios/ator/novo.jsp">
                             <img src="${cp}/imgs/actor.png" alt="">
-                            <h5 class="mt-3" >Ator</h5>
+                            <h5 class="mt-3 buttom" >Adicionar</h5>
                             </a>
                         </div>
                         <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/dvd/home.jsp">
+                            <a href="${cp}/formularios/dvd/novo.jsp">
                             <img src="${cp}/imgs/dvd-player.png" alt="">
-                            <h5 class="mt-3">Dvd</h5>
+                            <h5 class="mt-3">Excluir</h5>
                             </a>
                         </div>
                         
                         <!-- Segunda linha de caixas -->
                         <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/genero/home.jsp">
+                            <a href="${cp}/formularios/genero/novo.jsp">
                             <img src="${cp}/imgs/drama.png" alt="">
-                            <h5 class="mt-3">Genero</h5>
+                            <h5 class="mt-3">Alterar</h5>
                             </a>
                         </div>
                         <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/classificacao/home.jsp">
+                            <a href="${cp}/formularios/classificacao/novo.jsp">
                             <img src="${cp}/imgs/-18.png" alt="">
-                            <h5 class="mt-3">Classificacao</h5>
+                            <h5 class="mt-3">Listar</h5>
                             </a>
                         </div>
                     </div>
