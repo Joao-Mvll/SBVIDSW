@@ -74,7 +74,7 @@ public class AtorDAO extends DAO<Ator> {
         
         PreparedStatement stmt = getConnection().prepareStatement(
             " SELECT * FROM ATOR" +
-            " ORDER BY nome;" );
+            " ORDER BY id;" );
         
         ResultSet rs = stmt.executeQuery();
         

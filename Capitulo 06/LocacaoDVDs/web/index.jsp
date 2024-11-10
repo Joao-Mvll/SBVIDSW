@@ -17,19 +17,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="${cp}/css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <style>
 
+        .bg-roxo{
 
+        background-color: #7542f5 !important;
+
+        }
+        
+        
 
     </style>
     
     </head>
 
 
-    <body>
+    <body class="bg-fundo">
         
         <!-- Nav bar -->
 
@@ -79,11 +85,11 @@
             </nav>
         <!-- Nav bar -->
 
-        <div class="container mt-4 border" >
+        <div class="container mt-4  bg-light shadow">
             <div class="row">
                 <!-- Imagem à esquerda -->
-                <div class="col-lg-4 d-flex justify-content-center align-items-center m-0">
-                    <img src="${cp}/imgs/bg.png" alt="Imagem Descrição" class="img-fluid">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center m-0 bg-roxo">
+                    <img src="${cp}/imgs/bg.png" alt="" class="img-fluid">
                 </div>
                 
                 <!-- Caixas de Texto à direita -->

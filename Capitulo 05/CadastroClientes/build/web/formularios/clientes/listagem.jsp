@@ -1,87 +1,129 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
-<c:set var="prefixo" value="processaClientes?acao=preparar"/>
 <!DOCTYPE html>
 
 <html>
+
+
+
     <head>
-        <title>Clientes Cadastrados</title>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="${cp}/css/estilos.css"/>
-     </head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
 
- <body>
-
-    <h1>Clientes Cadastrados</h1>
-
-    <p>
-        <a href="${cp}/formularios/clientes/novo.jsp">
-            Novo Cliente
-        </a>
-    </p>
-
-    <table class="tabelaListagem">
-        <thead>
-         <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>E-mail</th>
-            <th>Data Nascimento</th>
-            <th>CPF</th>
-            <th>Cidade</th>
-            <th>Alterar</th>
-            <th>Excluir</th>
-         </tr>
-        </thead>
-       <tbody>
-
-        <jsp:useBean
-        id="servicos"
-        scope="page"
-        class="cadastroclientes.servicos.ClienteServices"/>
-
-        <c:forEach items="${servicos.todos}" var="cliente">
-         <tr>
-            <td>${cliente.id}</td>
-            <td>${cliente.nome}</td>
-            <td>${cliente.sobrenome}</td>
-            <td>${cliente.email}</td>
-            <td><fmt:formatDate
-                    pattern="dd/MM/yyyy"
-                    value="${cliente.dataNascimento}"/>
-                </td>
-            <td>${cliente.cpf}</td>
-            <td>${cliente.cidade.nome}</td>
-            <td>
-                <a href="${cp}/${prefixo}Alteracao&id=${cliente.id}">
-                        Alterar
-                </a>
-            </td>
-            <td>
-                <a href="${cp}/${prefixo}Exclusao&id=${cliente.id}">
-                        Excluir
-                </a>
-            </td>
-         </tr>
-        </c:forEach>
-       </tbody>
+        <link rel="stylesheet" href="${cp}/css/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
 
 
- </table>
 
-        <p>
-        <a href="${cp}/formularios/clientes/novo.jsp">
-        Novo Cliente
-        </a>
-        </p>
+    </style>
+    
+    </head>
 
- <p><a href="${cp}/index.jsp">Tela Principal</a></p>
 
- </body>
+    <body class="bg-fundo">
+        
+        <!-- Nav bar -->
 
- </html>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+
+                
+                <div class="container-fluid d-flex">
+                        
+                    
+                    <div class="d-flex align-items-center">
+
+                        <ul class="navbar-nav me-auto flex-row">
+
+                            <li class="nav-item me-3">
+                                <a class="nav-link " aria-current="page" href="${cp}/index.jsp">Home</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link" href="${cp}/formularios/dvd/home.jsp">Dvd</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link active" href="${cp}/formularios/ator/home.jsp">Ator</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link" href="${cp}/formularios/genero/home.jsp">Genero</a>
+                            </li>
+                            <li class="nav-item me-3">
+                                <a class="nav-link" href="${cp}/formularios/classificacao/home.jsp">Classificacao</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    
+                    
+                    <div class="" style="position: absolute; left: 50%; translate: -50%;">
+                    <a href="${cp}/index.jsp" class="nav-brand" >
+                        <img src="${cp}/imgs/logo.png" alt="" width="50" height="50" style="border-radius: 25%" class="d-inline-block align-text-center">
+                    </a>
+                    </div>
+
+
+                
+                </div>
+
+            </nav>
+        
+        
+        
+        <!-- Formulario-->
+        <div class="container border my-4 shadow p-4 bg-light">
+
+            
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h1>Adicionar Ator</h1>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <form method="post" action="${cp}/processaAtor" class="mb-4">
+                    
+                    <input type="hidden" name="acao" value="inserir"/>
+
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" name="nome" placeholder="Digite o nome" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="sobrenome">Sobrenome</label>
+                        <input type="text" class="form-control" name="sobrenome" placeholder="Digite o sobrenome" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="dataEstreia">Data de Estreia</label>
+                        <input type="date" class="form-control" name="data_estreia" required>
+                    </div>
+
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="${cp}/formularios/ator/home.jsp" class="btn btn-secondary">Voltar</a>
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>     
+    </body>
+</html>
