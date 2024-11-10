@@ -13,13 +13,13 @@ import java.sql.Date;
 public class Dvd {
     
     private int id;
-    private String nome;
+    private String titulo;
     private String ano_lancamento;
     private Ator ator_principal;
     private Ator ator_coadjuvante;
     private Date data_lancamento;
     private String duracao_minutos;
-    private String classificacao_etaria_id;
+    private ClassificacaoEtaria classificacao;
     private Genero genero;
 
     public int getId() {
@@ -30,12 +30,12 @@ public class Dvd {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getAno_lancamento() {
@@ -45,7 +45,7 @@ public class Dvd {
     public void setAno_lancamento(String ano_lancamento) {
         this.ano_lancamento = ano_lancamento;
     }
-    
+
     public Ator getAtor_principal() {
         return ator_principal;
     }
@@ -78,13 +78,6 @@ public class Dvd {
         this.duracao_minutos = duracao_minutos;
     }
 
-    public String getClassificacao_etaria_id() {
-        return classificacao_etaria_id;
-    }
-
-    public void setClassificacao_etaria_id(String classificacao_etaria_id) {
-        this.classificacao_etaria_id = classificacao_etaria_id;
-    }
 
     public Genero getGenero() {
         return genero;
@@ -93,5 +86,17 @@ public class Dvd {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
+
+    public ClassificacaoEtaria getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(ClassificacaoEtaria classificacao) {
+        this.classificacao = classificacao;
+    }
+
+    
+
+    
     
 }

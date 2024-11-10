@@ -9,37 +9,37 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import locacaodvds.entidades.Genero;
+import locacaodvds.entidades.ClassificacaoEtaria;
 
 /**
  *
- * @author bv3024903
+ * @author jogom
  */
-public class GeneroDAO extends DAO<Genero>{
+public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
     
-    public GeneroDAO() throws SQLException{
+    public ClassificacaoEtariaDAO() throws SQLException{
     }
 
     @Override
-    public void salvar(Genero obj) throws SQLException {
-    
+    public void salvar(ClassificacaoEtaria obj) throws SQLException {
+        
         PreparedStatement stmt = getConnection().prepareStatement(
         "INSERT INTO " + 
-        "genero( descricao ) " +
+        "classificacao_etaria( descricao ) " +
         "VALUES( ? ); " );
         
         stmt.setString( 1, obj.getDescricao() );
         
         stmt.executeUpdate();
         stmt.close();
+        
     }
 
     @Override
-    public void atualizar(Genero obj) throws SQLException {
+    public void atualizar(ClassificacaoEtaria obj) throws SQLException {
         
-    
         PreparedStatement stmt = getConnection().prepareStatement(
-        " UPDATE genero " +
+        " UPDATE classificacao_etaria " +
         " SET " + 
         " descricao " + 
         " WHERE " + 
@@ -53,10 +53,10 @@ public class GeneroDAO extends DAO<Genero>{
     }
 
     @Override
-    public void excluir(Genero obj) throws SQLException {
+    public void excluir(ClassificacaoEtaria obj) throws SQLException {
         
         PreparedStatement stmt = getConnection().prepareStatement(
-        " DELETE FROM genero " +
+        " DELETE FROM classificacao_etaria " +
         " WHERE " + 
         " id = ?");
         
@@ -64,28 +64,28 @@ public class GeneroDAO extends DAO<Genero>{
         
         stmt.executeUpdate();
         stmt.close();
-    
+        
     }
 
     @Override
-    public List<Genero> listarTodos() throws SQLException {
+    public List<ClassificacaoEtaria> listarTodos() throws SQLException {
         
-        List<Genero> lista = new ArrayList<>();
+        List<ClassificacaoEtaria> lista = new ArrayList<>();
         
         PreparedStatement stmt = getConnection().prepareStatement(
-            " SELECT * FROM genero " +
+            " SELECT * FROM classificacao_etaria " +
             " ORDER BY id;");
         
         ResultSet rs = stmt.executeQuery();
         
         while ( rs.next()){
             
-            Genero g = new Genero();
+            ClassificacaoEtaria c = new ClassificacaoEtaria();
             
-            g.setId(rs.getInt(" id "));
-            g.setDescricao(rs.getString(" descricao "));
+            c.setId(rs.getInt(" id "));
+            c.setDescricao(rs.getString(" descricao "));
             
-            lista.add(g);
+            lista.add(c);
             
             
         }
@@ -98,13 +98,12 @@ public class GeneroDAO extends DAO<Genero>{
     }
 
     @Override
-    public Genero obterPorId(int id) throws SQLException {
+    public ClassificacaoEtaria obterPorId(int id) throws SQLException {
         
-        
-        Genero genero = null;
+         ClassificacaoEtaria classificacao = null;
         
         PreparedStatement stmt = getConnection().prepareStatement(
-        " SELECT * FROM genero " +
+        " SELECT * FROM classificacao_etaria " +
         " WHERE " +
         " id = ?;");
         
@@ -114,17 +113,17 @@ public class GeneroDAO extends DAO<Genero>{
         
         while ( rs.next()){
             
-            genero = new Genero();
+            classificacao = new ClassificacaoEtaria();
             
-            genero.setId(rs.getInt( " id "));
-            genero.setDescricao(rs.getString( " descricao"));
+            classificacao.setId(rs.getInt( " id "));
+            classificacao.setDescricao(rs.getString( " descricao "));
             
         }
         
         rs.close();
         stmt.close();
         
-        return genero;
+        return classificacao;
     
     }
     
