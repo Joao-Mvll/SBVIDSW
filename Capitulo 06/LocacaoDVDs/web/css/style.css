@@ -1,4 +1,11 @@
-.bg-fundo{
+body{
             
             background-color: #aaa9ab; 
+}
+
+.btn-primary{
+    
+    background-color: #aaa9ab !important;
+    border-color: #aaa9ab !important;
+    
 }

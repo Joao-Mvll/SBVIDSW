@@ -99,15 +99,13 @@ public class AtorServlet extends HttpServlet {
                     
                     
                     int id = Integer.parseInt(request.getParameter( "id" ));
-                        Ator a = dao.obterPorId( id );
-                        request.setAttribute( "ator", a );
+                        Ator a = dao.obterPorId(id);
+                        request.setAttribute("ator", a);
 
                     if ( acao.equals( "prepararAlteracao" ) ) {
-                            disp = request.getRequestDispatcher(
-                                    "/formularios/ator/alterar.jsp" );
+                            disp = request.getRequestDispatcher( "/formularios/ator/alterar.jsp" );
                     } else if ( acao.equals( "prepararExclusao" ) ) {
-                            disp = request.getRequestDispatcher(
-                                    "/formularios/ator/excluir.jsp" );
+                            disp = request.getRequestDispatcher( "/formularios/ator/excluir.jsp" );
                     }
                 }
                 

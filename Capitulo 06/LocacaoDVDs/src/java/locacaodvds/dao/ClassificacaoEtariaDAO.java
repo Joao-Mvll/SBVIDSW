@@ -41,11 +41,12 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
         PreparedStatement stmt = getConnection().prepareStatement(
         " UPDATE classificacao_etaria " +
         " SET " + 
-        " descricao " + 
+        " descricao = ? " + 
         " WHERE " + 
-        " id = ?");
+        " id = ? ");
         
         stmt.setString(1, obj.getDescricao());
+        stmt.setInt(2, obj.getId());
         
         stmt.executeUpdate();
         stmt.close();
@@ -58,7 +59,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
         PreparedStatement stmt = getConnection().prepareStatement(
         " DELETE FROM classificacao_etaria " +
         " WHERE " + 
-        " id = ?");
+        " id = ? ");
         
         stmt.setInt(1, obj.getId());
         
@@ -74,7 +75,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
         
         PreparedStatement stmt = getConnection().prepareStatement(
             " SELECT * FROM classificacao_etaria " +
-            " ORDER BY id;");
+            " ORDER BY id ;");
         
         ResultSet rs = stmt.executeQuery();
         
@@ -82,8 +83,8 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
             
             ClassificacaoEtaria c = new ClassificacaoEtaria();
             
-            c.setId(rs.getInt(" id "));
-            c.setDescricao(rs.getString(" descricao "));
+            c.setId(rs.getInt( "id" ));
+            c.setDescricao(rs.getString( "descricao" ));
             
             lista.add(c);
             
@@ -105,7 +106,7 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
         PreparedStatement stmt = getConnection().prepareStatement(
         " SELECT * FROM classificacao_etaria " +
         " WHERE " +
-        " id = ?;");
+        " id = ? ;");
         
         stmt.setInt(1, id);
         
@@ -115,8 +116,8 @@ public class ClassificacaoEtariaDAO extends DAO<ClassificacaoEtaria>{
             
             classificacao = new ClassificacaoEtaria();
             
-            classificacao.setId(rs.getInt( " id "));
-            classificacao.setDescricao(rs.getString( " descricao "));
+            classificacao.setId(rs.getInt( "id" ));
+            classificacao.setDescricao(rs.getString( "descricao" ));
             
         }
         

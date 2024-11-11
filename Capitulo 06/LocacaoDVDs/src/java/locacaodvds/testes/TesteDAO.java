@@ -56,7 +56,7 @@ public class TesteDAO {
         
         */
         
-        AtorServices atorServices = new AtorServices();
+        /*AtorServices atorServices = new AtorServices();
         List<Ator> atores = atorServices.getTodos();
         
 
@@ -67,7 +67,9 @@ public class TesteDAO {
                 System.out.println("ID: " + ator.getId() + ", Nome: " + ator.getNome() + " " + ator.getSobrenome() + 
                 ", Data de Estreia: " + ator.getData_estreia()); 
             }
-        }
+        }*/
+        
+        
         
         
         

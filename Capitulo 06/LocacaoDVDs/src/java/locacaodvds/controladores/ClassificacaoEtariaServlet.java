@@ -4,6 +4,7 @@
  */
 package locacaodvds.controladores;
 
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,77 +12,134 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+import locacaodvds.dao.ClassificacaoEtariaDAO;
+import locacaodvds.entidades.ClassificacaoEtaria;
 
 /**
  *
  * @author jogom
  */
-@WebServlet(name = "ClassificacaoEtariaServlet", urlPatterns = {"/ClassificacaoEtariaServlet"})
+@WebServlet(name = "ClassificacaoServlet", 
+        urlPatterns = {"/processaClassificacao"})
 public class ClassificacaoEtariaServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    
+    protected void processRequest(
+            HttpServletRequest request, 
+            HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClassificacaoEtariaServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClassificacaoEtariaServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+            
+        String acao = request.getParameter("acao");
+        ClassificacaoEtariaDAO dao = null;
+        RequestDispatcher disp = null;
+        
+        try{
+            
+            dao = new ClassificacaoEtariaDAO();
+            
+            if ( acao.equals("inserir")){
+                
+                String descricao = request.getParameter("descricao");
+                
+                ClassificacaoEtaria c = new ClassificacaoEtaria();
+                
+                c.setDescricao(descricao);
+                
+                dao.salvar(c);
+                
+                disp = request.getRequestDispatcher("formularios/classificacao/home.jsp");
+                
+            }else if(acao.equals("alterar")){
+                
+                int id = Integer.parseInt(request.getParameter("id"));
+                String descricao = request.getParameter("descricao");
+                
+                ClassificacaoEtaria c = new ClassificacaoEtaria();
+                
+                c.setId(id);
+                c.setDescricao(descricao);
+                
+                dao.atualizar(c);
+                
+                disp = request.getRequestDispatcher("formularios/classificacao/listagem.jsp");
+            
+            }else if(acao.equals("excluir")){
+                
+                int id = Integer.parseInt(request.getParameter("id"));
+                
+                ClassificacaoEtaria c = new ClassificacaoEtaria();
+                
+                c.setId(id);
+                
+                dao.excluir(c);
+                
+                disp = request.getRequestDispatcher("formularios/classificacao/listagem.jsp");
+                
+                
+            }else{
+                
+                int id = Integer.parseInt(request.getParameter("id"));
+                ClassificacaoEtaria c = dao.obterPorId(id);
+                request.setAttribute("classificacao", c);
+                
+                if(acao.equals("prepararAlteracao")){
+                    disp = request.getRequestDispatcher("/formularios/classificacao/alterar.jsp");
+                }else if(acao.equals("prepararExclusao")){
+                    disp = request.getRequestDispatcher("/formularios/classificacao/excluir.jsp");
+                }
+                
+            }
+            
+        }catch(SQLException exc) {
+            exc.printStackTrace();
+        } finally {
+            if (dao != null) {
+                try {
+                    dao.fecharConexao();
+                } catch (SQLException exc) {
+                    exc.printStackTrace();
+                }
+            }
         }
+
+        if (disp != null) {
+            disp.forward(request, response);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+       protected void doGet(
+       HttpServletRequest request,
+       HttpServletResponse response )
+       throws ServletException, IOException {
+       processRequest( request, response );
+       }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+       @Override
+       protected void doPost(
+       HttpServletRequest request,
+       HttpServletResponse response )
+       throws ServletException, IOException {
+       processRequest( request, response );
+       }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+       @Override
+       public String getServletInfo() {
+       return "ClassificacaoServlet";
+       }
 
 }

@@ -41,11 +41,12 @@ public class GeneroDAO extends DAO<Genero>{
         PreparedStatement stmt = getConnection().prepareStatement(
         " UPDATE genero " +
         " SET " + 
-        " descricao " + 
+        " descricao = ? " + 
         " WHERE " + 
         " id = ?");
         
         stmt.setString(1, obj.getDescricao());
+        stmt.setInt(2, obj.getId());
         
         stmt.executeUpdate();
         stmt.close();
@@ -82,8 +83,8 @@ public class GeneroDAO extends DAO<Genero>{
             
             Genero g = new Genero();
             
-            g.setId(rs.getInt(" id "));
-            g.setDescricao(rs.getString(" descricao "));
+            g.setId(rs.getInt("id"));
+            g.setDescricao(rs.getString("descricao"));
             
             lista.add(g);
             
@@ -116,8 +117,8 @@ public class GeneroDAO extends DAO<Genero>{
             
             genero = new Genero();
             
-            genero.setId(rs.getInt( " id "));
-            genero.setDescricao(rs.getString( " descricao"));
+            genero.setId(rs.getInt( "id"));
+            genero.setDescricao(rs.getString( "descricao"));
             
         }
         

@@ -9,9 +9,9 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Classificacao</title>
 
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="${cp}/css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <style>
@@ -23,7 +23,7 @@
     </head>
 
 
-    <body>
+    <body class="bg-fundo">
         
         <!-- Nav bar -->
 
@@ -47,7 +47,7 @@
                                 <a class="nav-link " href="${cp}/formularios/ator/home.jsp">Ator</a>
                             </li>
                             <li class="nav-item me-3">
-                                <a class="nav-link" href="${cp}/formularios/genero/home.jsp">Genero</a>
+                                <a class="nav-link " href="${cp}/formularios/genero/home.jsp">Genero</a>
                             </li>
                             <li class="nav-item me-3">
                                 <a class="nav-link active" href="${cp}/formularios/classificacao/home.jsp">Classificacao</a>
@@ -75,43 +75,33 @@
         
         
         
-        <div class="container border my-2 shadow" >
+        <div class="container border my-2 shadow bg-light" >
             <div class="row">
                 <div class="col-sm-12 d-flex justify-content-center my-5 align-items-center" >
-                <h1 > Classificacão Etária </h1>
+                <h1> Classificacao Etaria </h1>
                 </div>
                 
-                <!-- Caixas de Texto -->
-                <div class="col-lg-12 d-flex justify-content-center  align-items-center">
-                    <div class="row p-5">
-                        <!-- Primeira linha de caixas -->
-                        <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/ator/novo.jsp">
-                            <img src="${cp}/imgs/acoes/adicionar.png" alt="">
-                            <h5 class="mt-3 buttom" >Adicionar</h5>
-                            </a>
+
+                        <div class="container py-5">
+                            <div class="row justify-content-center">
+
+                                <div class="col-md-4 mb-4">
+                                    <a href="${cp}/formularios/classificacao/novo.jsp" class="btn btn-lg btn-light w-100 text-center border shadow" style="border-radius: 10px;">
+                                        <img src="${cp}/imgs/acoes/adicionar.png" alt="" class="img-fluid mb-3">
+                                        <h4 class="text-black">Adicionar</h4>
+                                    </a>
+                                </div>
+
+
+                                <div class="col-md-4 mb-4">
+                                    <a href="${cp}/formularios/classificacao/listagem.jsp" class="btn btn-lg btn-light w-100 text-center border shadow" style="border-radius: 10px;">
+                                        <img src="${cp}/imgs/acoes/listar.png" alt="" class="img-fluid mb-3">
+                                        <h4 class="text-black">Listar</h4>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/dvd/novo.jsp">
-                            <img src="${cp}/imgs/acoes/excluir.png" alt="">
-                            <h5 class="mt-3">Excluir</h5>
-                            </a>
-                        </div>
-                        
-                        <!-- Segunda linha de caixas -->
-                        <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/genero/novo.jsp">
-                            <img src="${cp}/imgs/acoes/alterar.png" alt="">
-                            <h5 class="mt-3">Alterar</h5>
-                            </a>
-                        </div>
-                        <div class="col-md-6 p-3 px-2 text-center border btn btn-light" style="border-radius: 5%;">
-                            <a href="${cp}/formularios/classificacao/novo.jsp">
-                            <img src="${cp}/imgs/acoes/listar.png" alt="">
-                            <h5 class="mt-3">Listar</h5>
-                            </a>
-                        </div>
-                    </div>
+                            
                 </div>
             </div>
         </div>
