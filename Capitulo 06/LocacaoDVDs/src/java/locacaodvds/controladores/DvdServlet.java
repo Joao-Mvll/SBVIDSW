@@ -80,7 +80,7 @@ public class DvdServlet extends HttpServlet {
 
                 dao.salvar(d);
 
-                disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
+                disp = request.getRequestDispatcher("formularios/dvd/listagem.jsp");
 
 
 
@@ -120,7 +120,7 @@ public class DvdServlet extends HttpServlet {
 
                 dao.atualizar(d);
 
-                disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
+                disp = request.getRequestDispatcher("formularios/dvd/listagem.jsp");
 
 
             }else if(acao.equals("excluir")){

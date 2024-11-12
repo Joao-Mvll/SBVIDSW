@@ -47,10 +47,10 @@
                                 <a class="nav-link" href="${cp}/formularios/ator/home.jsp">Ator</a>
                             </li>
                             <li class="nav-item me-3">
-                                <a class="nav-link active" href="${cp}/formularios/genero/home.jsp">Genero</a>
+                                <a class="nav-link " href="${cp}/formularios/genero/home.jsp">Genero</a>
                             </li>
                             <li class="nav-item me-3">
-                                <a class="nav-link" href="${cp}/formularios/classificacao/home.jsp">Classificacao</a>
+                                <a class="nav-link active" href="${cp}/formularios/classificacao/home.jsp">Classificacao</a>
                             </li>
 
                         </ul>

@@ -80,7 +80,7 @@
             
         <div class="row">
             <div class="col-12 text-center mb-4">
-                <h1>Adicionar DVD</h1>
+                <h1>Alterar DVD</h1>
             </div>
         </div>
 
@@ -95,51 +95,57 @@
                     
                     <div class="form-group">
                         <label for="titulo">Título</label>
-                        <input type="text" class="form-control" name="titulo" placeholder="Digite o título" value="${requestScope.ator.titulo}" required>
+                        <input type="text" class="form-control" name="titulo" placeholder="Digite o título" value="${requestScope.dvd.titulo}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="anoLancamento">Ano de Lançamento</label>
-                        <input type="number" class="form-control" name="anoLancamento" placeholder="Digite o ano de lançamento" value="${requestScope.ator.titulo}" required>
+                        <input type="number" class="form-control" name="anoLancamento" placeholder="Digite o ano de lançamento" value="${requestScope.dvd.ano_lancamento}" required>
                     </div>
 
                     <jsp:useBean id="servicosAtor" scope="page" class="locacaodvds.servicos.AtorServices"/>
 
                     <div class="form-group">
                         <label for="idAtorPrincipal">Ator Principal</label>
-                        <select name="idAtorPrincipal" class="form-control" required>
+                        <select name="idAtorPrincipal" class="form-control" value="${requestScope.dvd.ator_principal}" required>
                             <c:forEach items="${servicosAtor.getTodos()}" var="ator">
-                                <option value="${ator.id}">${ator.nome}  ${ator.sobrenome}</option>
+                                <option value="${ator.id}" ${ator.id == requestScope.dvd.ator_principal.id ? 'selected' : ''}>
+                                    ${ator.nome}  ${ator.sobrenome}
+                                </option>
                             </c:forEach>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="idAtorCoadjuvante">Ator Coadjuvante</label>
-                        <select name="idAtorCoadjuvante" class="form-control" required>
+                        <select name="idAtorCoadjuvante" class="form-control" value="${requestScope.dvd.ator_coadjuvante}" required>
                             <c:forEach items="${servicosAtor.getTodos()}" var="ator">
-                                <option value="${ator.id}">${ator.nome}  ${ator.sobrenome}</option>
+                                <option value="${ator.id}" ${ator.id == requestScope.dvd.ator_coadjuvante.id ? 'selected' : ''}>
+                                    ${ator.nome}  ${ator.sobrenome}
+                                </option>
                             </c:forEach>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="dataLancamento">Data de Lançamento</label>
-                        <input type="date" class="form-control" name="dataLancamento" placeholder="Digite a data de lançamento" required>
+                        <input type="date" class="form-control" name="dataLancamento" placeholder="Digite a data de lançamento" value="${requestScope.dvd.data_lancamento}"  required>
                     </div>
 
                     <div class="form-group">
                         <label for="duracao">Duração (em minutos)</label>
-                        <input type="number" class="form-control" name="duracao" placeholder="Digite a duração em minutos" required>
+                        <input type="number" class="form-control" name="duracao" placeholder="Digite a duração em minutos" value="${requestScope.dvd.duracao_minutos}" required>
                     </div>
 
                     <jsp:useBean id="servicosClassificacao" scope="page" class="locacaodvds.servicos.ClassificacaoEtariaServices"/>
 
                     <div class="form-group">
                         <label for="idClassificacao">Classificação Etária</label>
-                        <select name="idClassificacao" class="form-control" required>
+                        <select name="idClassificacao" class="form-control" value="${requestScope.dvd.classificacao}" required>
                             <c:forEach items="${servicosClassificacao.getTodos()}" var="classificacao">
-                                <option value="${classificacao.id}">${classificacao.descricao}</option>
+                                <option value="${classificacao.id}" ${classificacao.id == requestScope.dvd.classificacao.id ? 'selected' : ''}>
+                                    ${classificacao.descricao}
+                                </option>
                             </c:forEach>
                         </select>
                     </div>
@@ -149,9 +155,11 @@
 
                     <div class="form-group">
                         <label for="idGenero">Gênero</label>
-                        <select name="idGenero" class="form-control" required>
+                        <select name="idGenero" class="form-control" value="${requestScope.dvd.genero}" required>
                             <c:forEach items="${servicosGenero.getTodos()}" var="genero">
-                                <option value="${genero.id}">${genero.descricao}</option>
+                                <option value="${genero.id}" ${genero.id == requestScope.dvd.genero.id ? 'selected' : ''}>
+                                    ${genero.descricao}
+                                </option>
                             </c:forEach>
                         </select>
                     </div>
@@ -161,7 +169,7 @@
                     
                     <div class="d-flex justify-content-between">
                         <a href="${cp}/formularios/dvd/home.jsp" class="btn btn-secondary">Voltar</a>
-                        <button type="submit" class="btn btn-primary">Alterar</button>
+                        <button type="submit" class="btn btn-primary" value="alterar">Alterar</button>
                     </div>
                 </form>
             </div>

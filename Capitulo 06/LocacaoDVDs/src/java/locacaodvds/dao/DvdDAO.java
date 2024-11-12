@@ -78,6 +78,7 @@ public class DvdDAO extends DAO<Dvd>{
         stmt.setInt(6, obj.getDuracao_minutos());
         stmt.setInt(7, obj.getClassificacao().getId());
         stmt.setInt(8, obj.getGenero().getId());
+        stmt.setInt(9, obj.getId());
         
         stmt.executeUpdate();
         stmt.close();
@@ -107,21 +108,21 @@ public class DvdDAO extends DAO<Dvd>{
 
         PreparedStatement stmt = getConnection().prepareStatement(
                  "SELECT " +
-                 "d.id idDvd, " +
-                 "d.titulo tituloDvd, " +
-                 "d.ano_lancamento anoLancamentoDvd, " +
-                 "d.data_lancamento dataLancamentoDvd, " +
-                 "d.duracao_minutos duracaoMinutosDvd, " +
-                 "a.id atorPrincipalId, " +
-                 "a.nome atorPrincipalNome, " +
-                 "a.sobrenome atorPrincipalSobrenome, " +
-                 "ac.id atorCoadjuvanteId, " +
-                 "ac.nome atorCoadjuvanteNome, " +
-                 "ac.sobrenome atorCoadjuvanteSobrenome, " +
-                 "g.id generoId, " +
-                 "g.descricao generoDescricao, " +
-                 "c.id classificacaoId, " +
-                 "c.descricao classificacaoDescricao " +
+                 " d.id idDvd, " +
+                 " d.titulo tituloDvd, " +
+                 " d.ano_lancamento anoLancamentoDvd, " +
+                 " d.data_lancamento dataLancamentoDvd, " +
+                 " d.duracao_minutos duracaoMinutosDvd, " +
+                 " a.id atorPrincipalId, " +
+                 " a.nome atorPrincipalNome, " +
+                 " a.sobrenome atorPrincipalSobrenome, " +
+                 " ac.id atorCoadjuvanteId, " +
+                 " ac.nome atorCoadjuvanteNome, " +
+                 " ac.sobrenome atorCoadjuvanteSobrenome, " +
+                 " g.id generoId, " +
+                 " g.descricao generoDescricao, " +
+                 " c.id classificacaoId, " +
+                 " c.descricao classificacaoDescricao " +
                  "FROM dvd d " +
                  "INNER JOIN ator a ON d.ator_principal_id = a.id " +
                  "INNER JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
@@ -176,28 +177,28 @@ public class DvdDAO extends DAO<Dvd>{
         Dvd dvd = null;
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "SELECT " +
-                "d.id idDvd, " +
-                "d.titulo tituloDvd, " +
-                "d.ano_lancamento anoLancamentoDvd, " +
-                "d.data_lancamento dataLancamentoDvd, " +
-                "d.duracao_minutos duracaoMinutosDvd, " +
-                "a.id atorPrincipalId, " +
-                "a.nome atorPrincipalNome, " +
-                "a.sobrenome atorPrincipalSobrenome, " +
-                "ac.id atorCoadjuvanteId, " +
-                "ac.nome atorCoadjuvanteNome, " +
-                "ac.sobrenome atorCoadjuvanteSobrenome, " +
-                "g.id generoId, " +
-                "g.descricao generoDescricao, " +
-                "c.id classificacaoId, " +
-                "c.descricao classificacaoDescricao " +
-                "FROM dvd d " +
-                "INNER JOIN ator a ON d.ator_principal_id = a.id " +
-                "INNER JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
-                "INNER JOIN genero g ON d.genero_id = g.id " +
-                "INNER JOIN classificacao_etaria c ON d.classificacao_etaria_id = c.id" +
-                "WHERE d.id = ?" );
+                " SELECT " +
+                " d.id idDvd, " +
+                " d.titulo tituloDvd, " +
+                " d.ano_lancamento anoLancamentoDvd, " +
+                " d.data_lancamento dataLancamentoDvd, " +
+                " d.duracao_minutos duracaoMinutosDvd, " +
+                " a.id atorPrincipalId, " +
+                " a.nome atorPrincipalNome, " +
+                " a.sobrenome atorPrincipalSobrenome, " +
+                " ac.id atorCoadjuvanteId, " +
+                " ac.nome atorCoadjuvanteNome, " +
+                " ac.sobrenome atorCoadjuvanteSobrenome, " +
+                " g.id generoId, " +
+                " g.descricao generoDescricao, " +
+                " c.id classificacaoId, " +
+                " c.descricao classificacaoDescricao " +
+                " FROM dvd d " +
+                " INNER JOIN ator a ON d.ator_principal_id = a.id " +
+                " INNER JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
+                " INNER JOIN genero g ON d.genero_id = g.id " +
+                " INNER JOIN classificacao_etaria c ON d.classificacao_etaria_id = c.id" +
+                " WHERE d.id = ?" );
         
                 stmt.setInt(1, id);
 

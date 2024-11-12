@@ -92,8 +92,7 @@
                     
                     <input name="acao" type="hidden" value="alterar"/>
                     <input name="id" type="hidden" value="${requestScope.ator.id}"/>
-                    
-                    <input type="hidden" name="acao" value="inserir"/>
+                   
 
                     
                     <div class="form-group">
