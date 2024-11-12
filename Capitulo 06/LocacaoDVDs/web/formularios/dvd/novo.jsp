@@ -105,8 +105,8 @@
                     <jsp:useBean id="servicosAtor" scope="page" class="locacaodvds.servicos.AtorServices"/>
 
                     <div class="form-group">
-                        <label for="atorPrincipal">Ator Principal</label>
-                        <select name="atorPrincipal" class="form-control" required>
+                        <label for="idAtorPrincipal">Ator Principal</label>
+                        <select name="idAtorPrincipal" class="form-control" required>
                             <c:forEach items="${servicosAtor.getTodos()}" var="ator">
                                 <option value="${ator.id}">${ator.nome}  ${ator.sobrenome}</option>
                             </c:forEach>
@@ -114,8 +114,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="atorCoadjuvante">Ator Coadjuvante</label>
-                        <select name="atorCoadjuvante" class="form-control" required>
+                        <label for="idAtorCoadjuvante">Ator Coadjuvante</label>
+                        <select name="idAtorCoadjuvante" class="form-control" required>
                             <c:forEach items="${servicosAtor.getTodos()}" var="ator">
                                 <option value="${ator.id}">${ator.nome}  ${ator.sobrenome}</option>
                             </c:forEach>
@@ -128,15 +128,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="duracaoMinutos">Duração (em minutos)</label>
-                        <input type="number" class="form-control" name="duracaoMinutos" placeholder="Digite a duração em minutos" required>
+                        <label for="duracao">Duração (em minutos)</label>
+                        <input type="number" class="form-control" name="duracao" placeholder="Digite a duração em minutos" required>
                     </div>
 
                     <jsp:useBean id="servicosClassificacao" scope="page" class="locacaodvds.servicos.ClassificacaoEtariaServices"/>
 
                     <div class="form-group">
-                        <label for="classificacao">Classificação Etária</label>
-                        <select name="classificacao" class="form-control" required>
+                        <label for="idClassificacao">Classificação Etária</label>
+                        <select name="idClassificacao" class="form-control" required>
                             <c:forEach items="${servicosClassificacao.getTodos()}" var="classificacao">
                                 <option value="${classificacao.id}">${classificacao.descricao}</option>
                             </c:forEach>
@@ -147,8 +147,8 @@
                     <jsp:useBean id="servicosGenero" scope="page" class="locacaodvds.servicos.GeneroServices"/>
 
                     <div class="form-group">
-                        <label for="genero">Gênero</label>
-                        <select name="genero" class="form-control" required>
+                        <label for="idGenero">Gênero</label>
+                        <select name="idGenero" class="form-control" required>
                             <c:forEach items="${servicosGenero.getTodos()}" var="genero">
                                 <option value="${genero.id}">${genero.descricao}</option>
                             </c:forEach>

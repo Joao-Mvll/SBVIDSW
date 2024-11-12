@@ -27,7 +27,7 @@ import locacaodvds.entidades.Genero;
  * @author jogom
  */
 @WebServlet(name = "DvdServlet", 
-        urlPatterns = {"/DvdServlet"})
+        urlPatterns = {"/processaDvd"})
 public class DvdServlet extends HttpServlet {
 
 
@@ -46,51 +46,110 @@ public class DvdServlet extends HttpServlet {
             
             dao = new DvdDAO();
             
-        if(acao.equals("inserir")){
+            if(acao.equals("inserir")){
+
+                String titulo = request.getParameter("titulo");
+                int anoLancamento = Integer.parseInt(request.getParameter("anoLancamento"));
+                int idAtorPrincipal = Integer.parseInt(request.getParameter("idAtorPrincipal"));
+                int idAtorCoadjuvante = Integer.parseInt(request.getParameter("idAtorCoadjuvante"));
+                String dataLancamento = request.getParameter("dataLancamento");
+                int duracao = Integer.parseInt(request.getParameter("duracao"));
+                int idClassificacao = Integer.parseInt(request.getParameter("idClassificacao"));
+                int idGenero = Integer.parseInt(request.getParameter("idGenero"));
+
+                Genero g = new Genero();
+                Ator aP = new Ator();
+                Ator aC = new Ator();
+                ClassificacaoEtaria c = new ClassificacaoEtaria();
+
+                aP.setId(idAtorPrincipal);
+                aC.setId(idAtorCoadjuvante);
+                g.setId(idGenero);
+                c.setId(idClassificacao);
+
+                Dvd d = new Dvd();
+
+                d.setTitulo(titulo);
+                d.setAno_lancamento(anoLancamento);
+                d.setAtor_principal(aP);
+                d.setAtor_coadjuvante(aC);
+                d.setData_lancamento(Date.valueOf(LocalDate.parse( dataLancamento, dtf ) ));
+                d.setDuracao_minutos(duracao);
+                d.setClassificacao(c);
+                d.setGenero(g);
+
+                dao.salvar(d);
+
+                disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
+
+
+
+            }else if(acao.equals("alterar")){
+
+                int id = Integer.parseInt(request.getParameter("id"));
+                String titulo = request.getParameter("titulo");
+                int anoLancamento = Integer.parseInt(request.getParameter("anoLancamento"));
+                int idAtorPrincipal = Integer.parseInt(request.getParameter("idAtorPrincipal"));
+                int idAtorCoadjuvante = Integer.parseInt(request.getParameter("idAtorCoadjuvante"));
+                String dataLancamento = request.getParameter("dataLancamento");
+                int duracao = Integer.parseInt(request.getParameter("duracao"));
+                int idClassificacao = Integer.parseInt(request.getParameter("idClassificacao"));
+                int idGenero = Integer.parseInt(request.getParameter("idGenero"));
+
+                Genero g = new Genero();
+                Ator aP = new Ator();
+                Ator aC = new Ator();
+                ClassificacaoEtaria c = new ClassificacaoEtaria();
+
+                aP.setId(idAtorPrincipal);
+                aC.setId(idAtorCoadjuvante);
+                g.setId(idGenero);
+                c.setId(idClassificacao);
+
+                Dvd d = new Dvd();
+
+                d.setId(id);
+                d.setTitulo(titulo);
+                d.setAno_lancamento(anoLancamento);
+                d.setAtor_principal(aP);
+                d.setAtor_coadjuvante(aC);
+                d.setData_lancamento(Date.valueOf(LocalDate.parse( dataLancamento, dtf ) ));
+                d.setDuracao_minutos(duracao);
+                d.setClassificacao(c);
+                d.setGenero(g);
+
+                dao.atualizar(d);
+
+                disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
+
+
+            }else if(acao.equals("excluir")){
+                
+                int id = Integer.parseInt(request.getParameter("id"));
+                
+                Dvd d = new Dvd();
+                d.setId(id);
+                
+                dao.excluir(d);
+                
+                disp = request.getRequestDispatcher("formularios/dvd/listagem.jsp");
+
+            }else{
+
+                int id = Integer.parseInt(request.getParameter( "id" ));
+                Dvd d = dao.obterPorId( id );
+                request.setAttribute( "dvd", d );
+
+                if ( acao.equals( "prepararAlteracao" ) ) {
+                        disp = request.getRequestDispatcher(
+                                "/formularios/dvd/alterar.jsp" );
+                } else if ( acao.equals( "prepararExclusao" ) ) {
+                        disp = request.getRequestDispatcher(
+                                "/formularios/dvd/excluir.jsp" );
+                }
+
+            }
             
-            String titulo = request.getParameter("titulo");
-            int anoLancamento = Integer.parseInt(request.getParameter("anoLancamento"));
-            int idAtorPrincipal = Integer.parseInt(request.getParameter("idAtorPrincipal"));
-            int idAtorCoadjuvante = Integer.parseInt(request.getParameter("idAtorCoadjuvante"));
-            String dataLancamento = request.getParameter("dataLancamento");
-            int duracao = Integer.parseInt(request.getParameter("duracao"));
-            int idClassificacao = Integer.parseInt(request.getParameter("idClassificacao"));
-            int idGenero = Integer.parseInt(request.getParameter("idGenero"));
-            
-            Genero g = new Genero();
-            Ator aP = new Ator();
-            Ator aC = new Ator();
-            ClassificacaoEtaria c = new ClassificacaoEtaria();
-            
-            aP.setId(idAtorPrincipal);
-            aC.setId(idAtorCoadjuvante);
-            g.setId(idGenero);
-            c.setId(idClassificacao);
-            
-            Dvd d = new Dvd();
-            
-            d.setTitulo(titulo);
-            d.setAno_lancamento(anoLancamento);
-            d.setAtor_principal(aP);
-            d.setAtor_coadjuvante(aC);
-            d.setData_lancamento(Date.valueOf(LocalDate.parse( dataLancamento, dtf ) ));
-            d.setDuracao_minutos(duracao);
-            d.setClassificacao(c);
-            d.setGenero(g);
-            
-            dao.salvar(d);
-            
-            disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
-            
-            
-            
-        }else if(acao.equals("alterar")){
-            
-        }else if(acao.equals("excluir")){
-            
-        }else{
-            
-        }
         } catch (SQLException exc) {
             exc.printStackTrace();
         } finally {
