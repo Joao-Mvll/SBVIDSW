@@ -9,3 +9,9 @@ body{
     border-color: #7542f5 !important;
     
 }
+
+.btn-primary:hover{
+    
+    background-color: #5231a3 !important;
+    border-color: #5231a3 !important;
+}
