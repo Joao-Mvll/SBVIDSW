@@ -74,44 +74,25 @@
         
         
         
-        <!-- Formulario-->
+
     <div class="container border my-4 shadow p-4 bg-light">
 
             
         <div class="row">
             <div class="col-12 text-center mb-4">
-                <h1>Alterar Genero</h1>
+                <h1>Erro</h1>
+                <p> A String foi inserida incorretamente </p>
             </div>
         </div>
-
-
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <form method="post" action="${cp}/processaGenero" class="mb-4">
-                    
-                    
-                    <input name="acao" type="hidden" value="alterar"/>
-                    <input name="id" type="hidden" value="${requestScope.genero.id}"/>
-                    
-                    <input type="hidden" name="acao" value="inserir"/>
-
-                    
-                    <div class="form-group">
-                        <label for="descricao">Descricacao</label>
-                        <input type="text" class="form-control" name="descricao" placeholder="Digite a descricao" value="${requestScope.genero.descricao}" required>
-                    </div>
 
                    
 
                     
                     <div class="d-flex justify-content-between">
                         <a href="${cp}/formularios/genero/listagem.jsp" class="btn btn-secondary">Voltar</a>
-                        <button type="submit" class="btn btn-primary" value="alterar">Alterar</button>
                     </div>
-                </form>
-            </div>
-        </div>
     </div>
+
 
 
 

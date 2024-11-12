@@ -47,28 +47,46 @@ public class GeneroServlet extends HttpServlet {
 
                 String descricao = request.getParameter("descricao");
                 
-                
-                Genero g = new Genero();
+                if(descricao == null || descricao.length()<1){
+                    
+                    disp = request.getRequestDispatcher("formularios/genero/erros/string.jsp");
+                    
+                }else{
+                    
+                    Genero g = new Genero();
                             
-                g.setDescricao(descricao);
+                    g.setDescricao(descricao);
 
-                dao.salvar(g);
+                    dao.salvar(g);
 
-                disp = request.getRequestDispatcher("/formularios/genero/home.jsp");
+                    disp = request.getRequestDispatcher("/formularios/genero/home.jsp");
+                
+                    
+                }
                 
             } else if (acao.equals("alterar")) {
 
                 int id = Integer.parseInt(request.getParameter("id"));      
                 String descricao = request.getParameter("descricao");
                 
-                Genero g = new Genero();
+                if(descricao == null || descricao.length()<1){
+                    
+                    disp = request.getRequestDispatcher("formularios/genero/erros/string.jsp");
+                    
+                }else{
+                    
+                    Genero g = new Genero();
                 
-                g.setId(id);
-                g.setDescricao(descricao);
-                
-                dao.atualizar(g);
+                    g.setId(id);
+                    g.setDescricao(descricao);
 
-                disp = request.getRequestDispatcher("/formularios/genero/listagem.jsp");
+                    dao.atualizar(g);
+
+                    disp = request.getRequestDispatcher("/formularios/genero/listagem.jsp");
+                    
+                }
+                
+                
 
             } else if (acao.equals("excluir")) {
 

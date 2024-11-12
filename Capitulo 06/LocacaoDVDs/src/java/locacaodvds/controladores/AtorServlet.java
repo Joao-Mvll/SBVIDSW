@@ -55,15 +55,34 @@ public class AtorServlet extends HttpServlet {
                     String data_estreia = request.getParameter("data_estreia");
                     
                     
-                    Ator a = new Ator();
+                    if(nome == null || nome.length()<1){
                     
-                    a.setNome(nome);
-                    a.setSobrenome(sobrenome);
-                    a.setData_estreia( Date.valueOf(LocalDate.parse( data_estreia, dtf ) ) );
+                        disp = request.getRequestDispatcher("formularios/ator/erros/string.jsp");
                     
-                    dao.salvar(a);
+                    }else if(sobrenome == null || sobrenome.length()<1){
                     
-                    disp = request.getRequestDispatcher("formularios/ator/home.jsp");
+                        disp = request.getRequestDispatcher("formularios/ator/erros/string.jsp");
+                    
+                    }else if(data_estreia.matches("\\d{4}-\\d{2}-\\d{2}")){
+                    
+                        Ator a = new Ator();
+                    
+                        a.setNome(nome);
+                        a.setSobrenome(sobrenome);
+                        a.setData_estreia( Date.valueOf(LocalDate.parse( data_estreia, dtf ) ) );
+
+                        dao.salvar(a);
+
+                        disp = request.getRequestDispatcher("formularios/ator/home.jsp");
+                    
+                    }else{
+                        
+                        disp = request.getRequestDispatcher("formularios/ator/erros/data.jsp");
+                        
+                        
+                    }
+                    
+                    
                     
                 } else if ( acao.equals( "alterar" ) ) {
                     
@@ -72,15 +91,35 @@ public class AtorServlet extends HttpServlet {
                     String sobrenome = request.getParameter("sobrenome");
                     String data_estreia = request.getParameter("data_estreia");
                     
-                    Ator a = new Ator();
-                    a.setId(id);
-                    a.setNome(nome);
-                    a.setSobrenome(sobrenome);
-                    a.setData_estreia( Date.valueOf(LocalDate.parse( data_estreia, dtf ) ) );
+                    if(nome == null || nome.length()<1){
                     
-                    dao.atualizar(a);
+                        disp = request.getRequestDispatcher("formularios/ator/erros/string.jsp");
                     
-                    disp = request.getRequestDispatcher("formularios/ator/home.jsp");
+                    }else if(sobrenome == null || sobrenome.length()<1){
+                    
+                        disp = request.getRequestDispatcher("formularios/ator/erros/string.jsp");
+                    
+                    }else if(data_estreia.matches("\\d{4}-\\d{2}-\\d{2}")){
+                        
+                        Ator a = new Ator();
+                        a.setId(id);
+                        a.setNome(nome);
+                        a.setSobrenome(sobrenome);
+                        a.setData_estreia( Date.valueOf(LocalDate.parse( data_estreia, dtf ) ) );
+
+                        dao.atualizar(a);
+
+                        disp = request.getRequestDispatcher("formularios/ator/home.jsp");
+
+                        
+                        
+                    }else{
+                        
+                        disp = request.getRequestDispatcher("formularios/ator/erros/data.jsp");
+                        
+                    }
+                    
+                    
                     
                     
                 } else if ( acao.equals( "excluir" ) ) {

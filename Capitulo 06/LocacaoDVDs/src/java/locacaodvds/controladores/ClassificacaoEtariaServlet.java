@@ -43,27 +43,44 @@ public class ClassificacaoEtariaServlet extends HttpServlet {
                 
                 String descricao = request.getParameter("descricao");
                 
-                ClassificacaoEtaria c = new ClassificacaoEtaria();
+                if(descricao == null || descricao.length()<1){
+                    
+                    disp = request.getRequestDispatcher("formularios/classificacao/erros/string.jsp");
+                    
+                }else{
+                    ClassificacaoEtaria c = new ClassificacaoEtaria();
                 
-                c.setDescricao(descricao);
+                    c.setDescricao(descricao);
+
+                    dao.salvar(c);
+
+                    disp = request.getRequestDispatcher("formularios/classificacao/home.jsp");
+                }
                 
-                dao.salvar(c);
-                
-                disp = request.getRequestDispatcher("formularios/classificacao/home.jsp");
                 
             }else if(acao.equals("alterar")){
                 
                 int id = Integer.parseInt(request.getParameter("id"));
                 String descricao = request.getParameter("descricao");
                 
-                ClassificacaoEtaria c = new ClassificacaoEtaria();
                 
-                c.setId(id);
-                c.setDescricao(descricao);
+                if(descricao == null || descricao.length()<1){
+                    
+                    disp = request.getRequestDispatcher("formularios/classificacao/erros/string.jsp");
+                    
+                }else{
+                    
+                    ClassificacaoEtaria c = new ClassificacaoEtaria();
                 
-                dao.atualizar(c);
+                    c.setId(id);
+                    c.setDescricao(descricao);
+
+                    dao.atualizar(c);
+
+                    disp = request.getRequestDispatcher("formularios/classificacao/listagem.jsp");
+                    
+                }
                 
-                disp = request.getRequestDispatcher("formularios/classificacao/listagem.jsp");
             
             }else if(acao.equals("excluir")){
                 

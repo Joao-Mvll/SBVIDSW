@@ -9,7 +9,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Genero</title>
+        <title>Ator</title>
 
         <link rel="stylesheet" href="${cp}/css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -44,10 +44,10 @@
                                 <a class="nav-link" href="${cp}/formularios/dvd/home.jsp">Dvd</a>
                             </li>
                             <li class="nav-item me-3">
-                                <a class="nav-link" href="${cp}/formularios/ator/home.jsp">Ator</a>
+                                <a class="nav-link active" href="${cp}/formularios/ator/home.jsp">Ator</a>
                             </li>
                             <li class="nav-item me-3">
-                                <a class="nav-link active" href="${cp}/formularios/genero/home.jsp">Genero</a>
+                                <a class="nav-link " href="${cp}/formularios/genero/home.jsp">Genero</a>
                             </li>
                             <li class="nav-item me-3">
                                 <a class="nav-link" href="${cp}/formularios/classificacao/home.jsp">Classificacao</a>
@@ -74,44 +74,25 @@
         
         
         
-        <!-- Formulario-->
+
     <div class="container border my-4 shadow p-4 bg-light">
 
             
         <div class="row">
             <div class="col-12 text-center mb-4">
-                <h1>Alterar Genero</h1>
+                <h1>Erro</h1>
+                <p> A Data foi inserida incorretamente </p>
             </div>
         </div>
-
-
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <form method="post" action="${cp}/processaGenero" class="mb-4">
-                    
-                    
-                    <input name="acao" type="hidden" value="alterar"/>
-                    <input name="id" type="hidden" value="${requestScope.genero.id}"/>
-                    
-                    <input type="hidden" name="acao" value="inserir"/>
-
-                    
-                    <div class="form-group">
-                        <label for="descricao">Descricacao</label>
-                        <input type="text" class="form-control" name="descricao" placeholder="Digite a descricao" value="${requestScope.genero.descricao}" required>
-                    </div>
 
                    
 
                     
                     <div class="d-flex justify-content-between">
-                        <a href="${cp}/formularios/genero/listagem.jsp" class="btn btn-secondary">Voltar</a>
-                        <button type="submit" class="btn btn-primary" value="alterar">Alterar</button>
+                        <a href="${cp}/formularios/ator/listagem.jsp" class="btn btn-secondary">Voltar</a>
                     </div>
-                </form>
-            </div>
-        </div>
     </div>
+
 
 
 
