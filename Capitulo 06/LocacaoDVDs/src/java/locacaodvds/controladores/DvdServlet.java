@@ -109,7 +109,7 @@ public class DvdServlet extends HttpServlet {
 
                     dao.salvar(d);
 
-                    disp = request.getRequestDispatcher("formularios/dvd/listagem.jsp");
+                    disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
                     
                 }else{
                     

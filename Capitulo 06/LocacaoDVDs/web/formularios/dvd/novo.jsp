@@ -99,7 +99,7 @@
 
                     <div class="form-group">
                         <label for="anoLancamento">Ano de Lançamento</label>
-                        <input type="number" class="form-control" name="anoLancamento" placeholder="Digite o ano de lançamento" required>
+                        <input type="number" class="form-control" maxlength="4" name="anoLancamento" placeholder="Digite o ano de lançamento" required>
                     </div>
 
                     <jsp:useBean id="servicosAtor" scope="page" class="locacaodvds.servicos.AtorServices"/>
@@ -129,7 +129,7 @@
 
                     <div class="form-group">
                         <label for="duracao">Duração (em minutos)</label>
-                        <input type="number" class="form-control" name="duracao" placeholder="Digite a duração em minutos" required>
+                        <input type="number" class="form-control" name="duracao" maxlength="4" placeholder="Digite a duração em minutos" required>
                     </div>
 
                     <jsp:useBean id="servicosClassificacao" scope="page" class="locacaodvds.servicos.ClassificacaoEtariaServices"/>
