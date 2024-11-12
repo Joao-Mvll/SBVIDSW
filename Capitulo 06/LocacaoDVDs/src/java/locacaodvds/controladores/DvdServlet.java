@@ -16,6 +16,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 import locacaodvds.dao.DvdDAO;
 import locacaodvds.entidades.Ator;
@@ -84,7 +85,7 @@ public class DvdServlet extends HttpServlet {
                     
                         disp = request.getRequestDispatcher("formularios/dvd/erros/string.jsp");
                     
-                }else if(dataLancamento.matches("\\d{4}-\\d{2}-\\d{2}")){
+                }else {
                     
                     Genero g = new Genero();
                     Ator aP = new Ator();
@@ -102,7 +103,16 @@ public class DvdServlet extends HttpServlet {
                     d.setAno_lancamento(anoLancamento);
                     d.setAtor_principal(aP);
                     d.setAtor_coadjuvante(aC);
-                    d.setData_lancamento(Date.valueOf(LocalDate.parse( dataLancamento, dtf ) ));
+                    try{
+                        
+                        d.setData_lancamento(Date.valueOf(LocalDate.parse( dataLancamento, dtf ) ));
+                        
+                    }catch(DateTimeParseException e){
+                            
+                        disp = request.getRequestDispatcher("formularios/ator/erros/data.jsp");
+         
+                    }
+                    
                     d.setDuracao_minutos(duracao);
                     d.setClassificacao(c);
                     d.setGenero(g);
@@ -110,10 +120,6 @@ public class DvdServlet extends HttpServlet {
                     dao.salvar(d);
 
                     disp = request.getRequestDispatcher("formularios/dvd/home.jsp");
-                    
-                }else{
-                    
-                    disp = request.getRequestDispatcher("formularios/dvd/erros/data.jsp");
                     
                 }
 
@@ -211,6 +217,7 @@ public class DvdServlet extends HttpServlet {
                     dao.fecharConexao();
                 } catch (SQLException exc) {
                     exc.printStackTrace();
+                    disp = request.getRequestDispatcher("formularios/dvd/erros/string.jsp");
                 }
             }
         }

@@ -113,6 +113,7 @@ public class GeneroServlet extends HttpServlet {
             }
         } catch (SQLException exc) {
             exc.printStackTrace();
+            disp = request.getRequestDispatcher("formularios/genero/erros/string.jsp");
         } finally {
             if (dao != null) {
                 try {

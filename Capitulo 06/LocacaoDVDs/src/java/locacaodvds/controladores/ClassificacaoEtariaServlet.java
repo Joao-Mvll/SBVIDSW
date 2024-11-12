@@ -117,6 +117,7 @@ public class ClassificacaoEtariaServlet extends HttpServlet {
                     dao.fecharConexao();
                 } catch (SQLException exc) {
                     exc.printStackTrace();
+                    disp = request.getRequestDispatcher("formularios/classificacao/erros/string.jsp");
                 }
             }
         }

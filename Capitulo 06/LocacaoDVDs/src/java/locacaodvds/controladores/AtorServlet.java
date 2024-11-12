@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -99,23 +100,28 @@ public class AtorServlet extends HttpServlet {
                     
                         disp = request.getRequestDispatcher("formularios/ator/erros/string.jsp");
                     
-                    }else if(data_estreia.matches("\\d{4}-\\d{2}-\\d{2}")){
+                    }else{
                         
                         Ator a = new Ator();
                         a.setId(id);
                         a.setNome(nome);
                         a.setSobrenome(sobrenome);
-                        a.setData_estreia( Date.valueOf(LocalDate.parse( data_estreia, dtf ) ) );
+                        
+                        try{
+                            a.setData_estreia( Date.valueOf(LocalDate.parse( data_estreia, dtf ) ) );
+                            
+                        }catch(DateTimeParseException e){
+                            disp = request.getRequestDispatcher("formularios/ator/erros/data.jsp");
+                            
+                            
+                        }
+                        
 
                         dao.atualizar(a);
 
                         disp = request.getRequestDispatcher("formularios/ator/home.jsp");
 
                         
-                        
-                    }else{
-                        
-                        disp = request.getRequestDispatcher("formularios/ator/erros/data.jsp");
                         
                     }
                     
@@ -156,6 +162,7 @@ public class AtorServlet extends HttpServlet {
                         dao.fecharConexao();
                 } catch ( SQLException exc ) {
                     exc.printStackTrace();
+                    disp = request.getRequestDispatcher("formularios/ator/erros/string.jsp");
                     }
                 }
             }
