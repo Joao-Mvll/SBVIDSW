@@ -138,7 +138,7 @@ public class DvdServlet extends HttpServlet {
 
                 int id = Integer.parseInt(request.getParameter( "id" ));
                 Dvd d = dao.obterPorId( id );
-                request.setAttribute( "dvd", d );
+                request.setAttribute("dvd", d );
 
                 if ( acao.equals( "prepararAlteracao" ) ) {
                         disp = request.getRequestDispatcher(

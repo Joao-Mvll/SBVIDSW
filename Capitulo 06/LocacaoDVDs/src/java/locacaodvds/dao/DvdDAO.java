@@ -114,17 +114,19 @@ public class DvdDAO extends DAO<Dvd>{
                  "d.duracao_minutos duracaoMinutosDvd, " +
                  "a.id atorPrincipalId, " +
                  "a.nome atorPrincipalNome, " +
+                 "a.sobrenome atorPrincipalSobrenome, " +
                  "ac.id atorCoadjuvanteId, " +
                  "ac.nome atorCoadjuvanteNome, " +
+                 "ac.sobrenome atorCoadjuvanteSobrenome, " +
                  "g.id generoId, " +
                  "g.descricao generoDescricao, " +
                  "c.id classificacaoId, " +
                  "c.descricao classificacaoDescricao " +
                  "FROM dvd d " +
-                 "JOIN ator a ON d.ator_principal_id = a.id " +
-                 "JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
-                 "JOIN genero g ON d.genero_id = g.id " +
-                 "JOIN classificacao_etaria c ON d.classificacao_etaria_id = c.id");
+                 "INNER JOIN ator a ON d.ator_principal_id = a.id " +
+                 "INNER JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
+                 "INNER JOIN genero g ON d.genero_id = g.id " +
+                 "INNER JOIN classificacao_etaria c ON d.classificacao_etaria_id = c.id");
 
         ResultSet rs = stmt.executeQuery();
 
@@ -147,8 +149,10 @@ public class DvdDAO extends DAO<Dvd>{
 
             atorPrincipal.setId(rs.getInt("atorPrincipalId"));
             atorPrincipal.setNome(rs.getString("atorPrincipalNome"));
+            atorPrincipal.setSobrenome(rs.getString("atorPrincipalSobrenome"));
             atorCoadjuvante.setId(rs.getInt("atorCoadjuvanteId"));
             atorCoadjuvante.setNome(rs.getString("atorCoadjuvanteNome"));
+            atorCoadjuvante.setSobrenome(rs.getString("atorCoadjuvanteSobrenome"));
             genero.setId(rs.getInt("generoId"));
             genero.setDescricao(rs.getString("generoDescricao"));
             classificacao.setId(rs.getInt("classificacaoId"));
@@ -172,60 +176,64 @@ public class DvdDAO extends DAO<Dvd>{
         Dvd dvd = null;
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "SELECT" +
-                " d.id idDvd, " +
-                " d.titulo tituloDvd, " +
-                " d.ano_lancamento anoLancamentoDvd, " +
-                " d.data_lancamento dataLancamentoDvd, " +
-                " d.duracao_minutos duracaoMinutosDvd, " +
-                " a.id atorPrincipalId, " +
-                " a.nome atorPrincipalNome, " + 
-                " ac.id atorCoadjuvanteId, " +
-                " ac.nome atorCoadjuvanteNome, " + 
-                " g.id generoId, " +
-                " g.descricao generoDescricao, " + 
-                " c.id classificacaoId, " +
-                " c.descricao classificaoDescricao " +
+                "SELECT " +
+                "d.id idDvd, " +
+                "d.titulo tituloDvd, " +
+                "d.ano_lancamento anoLancamentoDvd, " +
+                "d.data_lancamento dataLancamentoDvd, " +
+                "d.duracao_minutos duracaoMinutosDvd, " +
+                "a.id atorPrincipalId, " +
+                "a.nome atorPrincipalNome, " +
+                "a.sobrenome atorPrincipalSobrenome, " +
+                "ac.id atorCoadjuvanteId, " +
+                "ac.nome atorCoadjuvanteNome, " +
+                "ac.sobrenome atorCoadjuvanteSobrenome, " +
+                "g.id generoId, " +
+                "g.descricao generoDescricao, " +
+                "c.id classificacaoId, " +
+                "c.descricao classificacaoDescricao " +
                 "FROM dvd d " +
-                "JOIN ator a ON d.ator_principal_id = a.id " +
-                "JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
-                "JOIN genero g ON d.genero_id = g.id " +
-                "JOIN classificacao_etaria c ON d.classificacao_etaria_id = c.id " +
+                "INNER JOIN ator a ON d.ator_principal_id = a.id " +
+                "INNER JOIN ator ac ON d.ator_coadjuvante_id = ac.id " +
+                "INNER JOIN genero g ON d.genero_id = g.id " +
+                "INNER JOIN classificacao_etaria c ON d.classificacao_etaria_id = c.id" +
                 "WHERE d.id = ?" );
-
-        ResultSet rs = stmt.executeQuery();
-
-        if ( rs.next() ) {
-            
-        dvd = new Dvd();
-        Ator a_principal = new Ator();
-        Ator a_coadjuvante = new Ator();
-        Genero g = new Genero();
-        ClassificacaoEtaria c = new ClassificacaoEtaria();
-
-        dvd.setId( rs.getInt( "idDvd" ) );
-        dvd.setTitulo( rs.getString( "tituloDvd" ) );
-        dvd.setAno_lancamento( rs.getInt( "anoLancamentoDvd" ) );
-        dvd.setData_lancamento( rs.getDate( "dataLancamentoDvd" ) );
-        dvd.setDuracao_minutos( rs.getInt( "duracaoMinutosDvd" ) );
-        dvd.setAtor_coadjuvante( a_coadjuvante );
-        dvd.setAtor_principal( a_principal );
-        dvd.setGenero(g);
-        dvd.setClassificacao(c);
-
-        a_principal.setId( rs.getInt( "atorPrincipalId" ) );
-        a_principal.setNome( rs.getString( "atorPrincipalNome" ) );
-        a_coadjuvante.setId( rs.getInt( "atorCoadjuvanteId" ) );
-        a_coadjuvante.setNome( rs.getString( "atorCoadjuvanteNome" ) );
-
-        g.setId( rs.getInt( "generoId" ) );
-        g.setDescricao( rs.getString( "generoDescricao" ) );
         
-        c.setId( rs.getInt( " classificacaoId " ) );
-        c.setDescricao( rs.getString( " classificaoDescricao " ) );
+                stmt.setInt(1, id);
 
+                ResultSet rs = stmt.executeQuery();
 
-        }
+                while (rs.next()) {
+                    dvd = new Dvd();
+                    Ator ap = new Ator();
+                    Ator ac = new Ator();
+                    Genero g = new Genero();
+                    ClassificacaoEtaria c = new ClassificacaoEtaria();
+
+                    dvd.setId(rs.getInt("idDvd"));
+                    dvd.setTitulo(rs.getString("tituloDvd"));
+                    dvd.setAno_lancamento(rs.getInt("anoLancamentoDvd"));
+                    dvd.setData_lancamento(rs.getDate("dataLancamentoDvd"));
+                    dvd.setDuracao_minutos(rs.getInt("duracaoMinutosDvd"));
+
+                    ap.setId(rs.getInt("atorPrincipalId"));
+                    ap.setNome(rs.getString("atorPrincipalNome"));
+                    ap.setSobrenome(rs.getString("atorPrincipalSobrenome"));
+                    dvd.setAtor_principal(ap);
+
+                    ac.setId(rs.getInt("atorCoadjuvanteId"));
+                    ac.setNome(rs.getString("atorCoadjuvanteNome"));
+                    ac.setSobrenome(rs.getString("atorCoadjuvanteSobrenome"));
+                    dvd.setAtor_coadjuvante(ac);
+
+                    g.setId(rs.getInt("generoId"));
+                    g.setDescricao(rs.getString("generoDescricao"));
+                    dvd.setGenero(g);
+
+                    c.setId(rs.getInt("classificacaoId"));
+                    c.setDescricao(rs.getString("classificacaoDescricao"));
+                    dvd.setClassificacao(c);
+                }
 
         rs.close();
         stmt.close();
