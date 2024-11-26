@@ -1,8 +1,8 @@
 .section{
-    width: 940px;
-    height: 800px;
+    width: 840px;
+    height: 600px;
     border-radius: 20px;
-    background: #63D67C;
+    background: #fff;
     justify-content: center;
     align-items: center;
     display: grid;
@@ -22,7 +22,7 @@ body{
 
 button{
     border-radius: 40px;
-    background: #fff;
+    background: #63D67C;
     display: flex;
     width: 314px;
     padding: 22px 0px;

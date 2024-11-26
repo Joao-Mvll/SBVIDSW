@@ -1,13 +1,26 @@
 
 function executarExemplo01(event){
     
-    const fruta = prompt("Diga o nome da Fruta");
-    const cor_fruta = prompt("Diga a cor da Fruta");
+    let f = prompt("Nome da Fruta: ");
     
-    const saida = `Fruta: ${fruta} \n`+
-                  `Cor: ${cor_fruta} \n`;
-                    
-    alert(saida);
-    
-    
+    $.ajax("listarFruta", {
+        data:{
+            fruta: f
+        },
+        dataType: "json"
+    }).done( ( data, textStatus ) =>{
+        
+        let $div = $( "#divExemplo1" );
+        $div.html( "" );
+        
+        data.forEach( fruta => {
+            $div.append( 
+                `<p>Nome: ${fruta.nome}</p>` +
+                `<p>Cor: ${fruta.cor}</p></div>` );
+        });
+        
+    }).fail( ( jqXHR, textStatus, errorThrown ) => {
+        alert( "Erro: " + errorThrown + "\n" +
+               "Status: " + textStatus );
+    });
 }
