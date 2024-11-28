@@ -1,48 +1,105 @@
-.section{
-    width: 840px;
-    height: 600px;
-    border-radius: 20px;
-    background: #fff;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap');
+
+
+.navbar{
+
+    position: fixed;
+    height: 42px;
+    padding: 10px 0px;
+    display: flex;
     align-items: center;
-    display: grid;
     text-align: center;
+    background-color: rgb(41, 40, 40);
+    overflow: hidden;
+    width: 100vw;
 
 }
 
 body{
     margin: 0;
-    background-color: gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     overflow: hidden;
+    font-family: "Parkinsans", sans-serif;
 }
 
-button{
-    border-radius: 40px;
-    background: #63D67C;
-    display: flex;
-    width: 314px;
-    padding: 22px 0px;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    cursor: pointer;
+.navbar a{
+
+    padding: 30px;
+    text-decoration: none;
+    color: white;
 }
 
-button:hover{
-    background: #7ed190;
+.navbar a:hover{
+
+    background-color: rgb(107, 106, 106);
+    text-decoration: none;
+
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.lado-esquerdo {
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7b57ff;
+}
+
+.lado-direito {
+  width: 70vw;
+  background-color: rgb(250, 242, 242); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
-.divExemplo {
-    border-color: black;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 5px;
-    height: 300px;
-    width: 300px;
+
+.exemploDiv{
+
+  height: 70%;
+  width: 70%;
+  background-color: rgb(255, 255, 255); 
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.062);
+
     
+}
+
+
+.card {
+  width: 300px;
+  height: 220px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  gap: 13px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.062);
+}
+
+
+.adicionar {
+  width: 80px;
+  height: 30px;
+  background-color: #7b57ff;
+  transition-duration: .2s;
+  border: none;
+  color: rgb(241, 241, 241);
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+} 
+
+.adicionar:hover{
+
+  background-color: #987cff;
+
 }

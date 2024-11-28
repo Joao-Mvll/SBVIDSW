@@ -5,27 +5,56 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Capitulo 07</title>
-        <link rel="stylesheet" href="${cp}/css/estilos.css"/>
-        <script src="${cp}/js/exemplo01.js"></script>
-        <script src="${cp}/js/exemplo02.js"></script>
-        <script src="${cp}/js/exemplo03.js"></script>
-    </head>
-    <body>
-        
-        <div class="section">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
 
-            <button onclick="executarExemplo01(event)"> Exemplo 01 </button>
-            
-            <div  id="divExemplo1" class="divExemplo">
-                
-            </div>
+<div class="navbar">
+
+    <a href="index..html">Frutas</a>
+    <a href="carros.html">Carros</a>
+    <a href="produtos.html">Produtos</a>
+
+
+</div>
+
+<div class="container">
+
+
+    <div class="lado-esquerdo">
+
+        
+        <div class="card">
+
+            <p style="font-size: 20px; font-weight: 800; color: rgb(26, 26, 26);">Frutas</p>
+            <p style="text-align: center;
+            font-size: 0.7em;
+            font-weight: 600;
+            color: rgb(99, 99, 99);">Adicione uma fruta para a listagem</p>
+
+            <button class="adicionar">Adicionar</button>
+
+        </div>
+
+        
+    </div>
+
+
+    <div class="lado-direito">
+
+        <div class="exemploDiv">
 
         </div>
 
 
+    </div>
 
-        
-    </body>
+</div>
+
+    
+</body>
 </html>
