@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${cp}/css/estilos.css">
-    <script src="${cp}/js/frutaJS.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
 
@@ -29,19 +29,15 @@
 
         
         <div class="card">
-            
-            
 
-                    <p style="font-size: 20px; font-weight: 800; color: rgb(26, 26, 26);">Frutas</p>
-                    <p style="text-align: center;
-                    font-size: 0.7em;
-                    font-weight: 600;
-                    color: rgb(99, 99, 99);">Adicione uma fruta para a listagem</p>
+            <p style="font-size: 20px; font-weight: 800; color: rgb(26, 26, 26);">Carros</p>
+            <p style="text-align: center;
+            font-size: 0.7em;
+            font-weight: 600;
+            color: rgb(99, 99, 99);">Adicione um carro para a listagem</p>
 
-                    <button class="adicionar" onclick="executarFruta(event)">
-                        Adicionar
-                    </button>
-            
+            <button class="adicionar">Adicionar</button>
+
         </div>
 
         
@@ -50,7 +46,7 @@
 
     <div class="lado-direito">
 
-        <div class="exemploDIV">
+        <div class="exemploDiv">
 
         </div>
 

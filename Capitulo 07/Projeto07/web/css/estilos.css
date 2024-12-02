@@ -103,3 +103,34 @@ body{
   background-color: #987cff;
 
 }
+
+
+
+.listagem {
+    border: solid thin #006699;
+    background-color: #ffa800;
+    margin-bottom: 5px;
+}
+
+.listagem p {
+    margin: 0px;
+}
+
+/* seleção da primeira tag <p> filha do elemento
+ * que usar a classe .listagem
+ */
+.listagem p:nth-child(1) {
+    background-color: #489eff;
+}
+
+/* seleção da segunda tag <p> filha do elemento
+ * que usar a classe .listagem
+ */
+.listagem p:nth-child(2) {
+    background-color: #248bff;
+}
+
+/* já deu para entender, não é? */
+.listagem p:nth-child(3) {
+    background-color: #0068dd;
+}

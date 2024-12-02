@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package capitulo07javascript.pojo;
+package projeto07.entidades;
 
 /**
  *
@@ -11,7 +11,7 @@ package capitulo07javascript.pojo;
 public class Produto {
     
     private int id;
-    private String descriucao;
+    private String descricao;
     private int quantidade;
 
     public int getId() {
@@ -22,12 +22,12 @@ public class Produto {
         this.id = id;
     }
 
-    public String getDescriucao() {
-        return descriucao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescriucao(String descriucao) {
-        this.descriucao = descriucao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getQuantidade() {
@@ -37,5 +37,7 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+    
+    
     
 }
