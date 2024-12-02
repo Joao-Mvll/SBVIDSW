@@ -1,14 +1,14 @@
-function executarFruta(event){
+function executarFruta( event ){
     
-    let n = prompt("Nome da Fruta:");
-    let c = prompt("Cor da Fruta:");
+    let nome = prompt("Nome da Fruta:");
+    let cor = prompt("Cor da Fruta:");
     
     $.ajax("processaFruta", {
         type: "POST",
         data: {
             acao: "inserir",
-            nome: n,
-            cor: c
+            nome: nome,
+            cor: cor
         },
         dataType: "json"
     }).done((data,textStatus ) =>{

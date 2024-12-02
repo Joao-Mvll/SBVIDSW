@@ -10,6 +10,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="${cp}/css/estilos.css">
     <script src="${cp}/js/frutaJS.js"></script>
+    <script src="${cp}/js/libs/jquery/jquery.min.js"></script>
 </head>
 <body>
 
@@ -38,7 +39,7 @@
                     font-weight: 600;
                     color: rgb(99, 99, 99);">Adicione uma fruta para a listagem</p>
 
-                    <button class="adicionar" onclick="executarFruta(event)">
+                    <button class="adicionar" onclick="executarFruta( event )">
                         Adicionar
                     </button>
             

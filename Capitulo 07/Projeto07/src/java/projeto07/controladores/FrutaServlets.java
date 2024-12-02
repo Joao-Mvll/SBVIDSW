@@ -14,6 +14,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import projeto07.servicos.FrutaServices;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,10 +38,12 @@ public class FrutaServlets extends HttpServlet {
         Jsonb jb = JsonbBuilder.create();
         String acao = request.getParameter("acao");
         FrutaDAO dao = null;
+        FrutaServices frutas = new FrutaServices();
         
-         try {
+        try ( PrintWriter out = response.getWriter() ) {
              
             dao = new FrutaDAO();
+            out.print( jb.toJson( frutas.getTodos() ) );
 
             if (acao.equals("inserir")) {
 
@@ -52,6 +56,7 @@ public class FrutaServlets extends HttpServlet {
                 f.setCor(cor);
                 dao.salvar(f);
 
+                
 
                                  
 
