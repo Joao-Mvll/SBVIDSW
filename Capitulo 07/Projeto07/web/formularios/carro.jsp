@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${cp}/css/estilos.css">
-    <script src="main.js"></script>
+    <script src="${cp}/js/carroJS.js"></script> 
+    <script src="${cp}/js/libs/jquery/jquery.min.js"></script>
 </head>
 <body>
 
@@ -29,15 +30,19 @@
 
         
         <div class="card">
+            
+            
 
-            <p style="font-size: 20px; font-weight: 800; color: rgb(26, 26, 26);">Carros</p>
-            <p style="text-align: center;
-            font-size: 0.7em;
-            font-weight: 600;
-            color: rgb(99, 99, 99);">Adicione um carro para a listagem</p>
+                    <p style="font-size: 20px; font-weight: 800; color: rgb(26, 26, 26);">Carros</p>
+                    <p style="text-align: center;
+                    font-size: 0.7em;
+                    font-weight: 600;
+                    color: rgb(99, 99, 99);">Adicione um Carro para mostrar a listagem</p>
 
-            <button class="adicionar">Adicionar</button>
-
+                    <button class="adicionar" onclick="executarCarro( event )">
+                        Adicionar
+                    </button>
+            
         </div>
 
         
@@ -46,7 +51,7 @@
 
     <div class="lado-direito">
 
-        <div class="exemploDiv">
+        <div class="exemploDIV" id="exemploCarro" style=" width: 1000px; height:500px;">
 
         </div>
 

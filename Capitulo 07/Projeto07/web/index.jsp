@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${cp}/css/estilos.css">
-    <script src="${cp}/js/frutaJS.js"></script>
+    <script src="${cp}/js/frutaJS.js"></script> 
     <script src="${cp}/js/libs/jquery/jquery.min.js"></script>
-</head>
+    </head>
 <body>
 
 <div class="navbar">
@@ -51,7 +51,7 @@
 
     <div class="lado-direito">
 
-        <div class="exemploDIV" id="exemploDIV" style=" width: 1000px; height:700px;">
+        <div class="exemploDIV" id="exemploDIV" style=" width: 1000px; height:500px;">
 
         </div>
 

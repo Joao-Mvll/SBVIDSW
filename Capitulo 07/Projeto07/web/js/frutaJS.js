@@ -1,4 +1,6 @@
-function executarFruta( event ){
+
+
+function executarFruta(event){
     
     let nome = prompt("Nome da Fruta:");
     let cor = prompt("Cor da Fruta:");
@@ -20,7 +22,7 @@ function executarFruta( event ){
             $div.append( 
                 `<div class="listagem">Fruta:
                  <p>Nome: ${fruta.nome}</p>`+
-                `<p>Cor: ${fruta.cor}</p>`);
+                `<p>Cor: ${fruta.cor}</p></div>`);
         });
         
     }).fail( ( jqXHR, textStatus, errorThrown ) => {

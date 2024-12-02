@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${cp}/css/estilos.css">
-    <script src="main.js"></script>
+    <script src="${cp}/js/produtoJS.js"></script> 
+    <script src="${cp}/js/libs/jquery/jquery.min.js"></script>
 </head>
 <body>
 
@@ -36,7 +37,7 @@
             font-weight: 600;
             color: rgb(99, 99, 99);">Adicione um produto para a listagem</p>
 
-            <button class="adicionar">Adicionar</button>
+            <button class="adicionar" onclick="executarProduto( event )">Adicionar</button>
 
         </div>
 
@@ -46,7 +47,7 @@
 
     <div class="lado-direito">
 
-        <div class="exemploDiv">
+        <div class="exemploDIV" id="exemploDIV" style=" width: 1000px; height:500px;">
 
         </div>
 

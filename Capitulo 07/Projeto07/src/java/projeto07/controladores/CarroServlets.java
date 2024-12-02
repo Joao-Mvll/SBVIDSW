@@ -14,22 +14,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import projeto07.servicos.FrutaServices;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import projeto07.dao.FrutaDAO;
-import projeto07.entidades.Fruta;
+import projeto07.dao.CarroDAO;
+import projeto07.entidades.Carro;
+import projeto07.servicos.CarroServices;
 
-/**
- *
- * @author jogom
- */
-@WebServlet(name = "frutaServlets", urlPatterns = {"/processaFruta"})
-public class FrutaServlets extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request,
+@WebServlet(name = "CarroServlets", urlPatterns = {"/processaCarro"})
+public class CarroServlets extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, 
             HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         
@@ -37,52 +32,54 @@ public class FrutaServlets extends HttpServlet {
         
         Jsonb jb = JsonbBuilder.create();
         String acao = request.getParameter("acao");
-        FrutaDAO dao = null;
-        FrutaServices frutas = new FrutaServices();
+        CarroDAO dao = new CarroDAO();
+        CarroServices carros = new CarroServices();
         
-        try ( PrintWriter out = response.getWriter() ) {
-             
-            dao = new FrutaDAO();;
-            System.out.println(jb.toJson(frutas.getTodos()));
+        try( PrintWriter out = response.getWriter() ){
             
-            if (acao.equals("inserir")) {
-
+            dao = new CarroDAO();
+            
+            if(acao.equals("inserir")){
+                
                 String nome = request.getParameter("nome");
-                String cor = request.getParameter("cor");
+                String modelo = request.getParameter("modelo");
+                int ano = Integer.parseInt(request.getParameter("ano"));
                 
-              
+                Carro c = new Carro();
                 
-                Fruta f = new Fruta();
+                c.setNome(nome);
+                c.setModelo(modelo);
+                c.setAno(ano);
                 
-                f.setNome(nome);
-                f.setCor(cor);
-                dao.salvar(f);     
+                dao.salvar(c);
                 
-                out.print( jb.toJson( frutas.getTodos() ) );
-
+                out.print( jb.toJson( carros.getTodos() ) );
+                
             }
             
+        }catch( SQLException e){
             
-            
-        } catch (SQLException e) {
-
         }
-      
-         
         
-        
-       
         
     }
 
-    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(FrutaServlets.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CarroServlets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +97,7 @@ public class FrutaServlets extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(FrutaServlets.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CarroServlets.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
