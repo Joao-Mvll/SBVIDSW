@@ -42,9 +42,9 @@ public class FrutaServlets extends HttpServlet {
         
         try ( PrintWriter out = response.getWriter() ) {
              
-            dao = new FrutaDAO();
-            out.print( jb.toJson( frutas.getTodos() ) );
-
+            dao = new FrutaDAO();;
+            System.out.println(jb.toJson(frutas.getTodos()));
+            
             if (acao.equals("inserir")) {
 
                 String nome = request.getParameter("nome");
@@ -54,16 +54,18 @@ public class FrutaServlets extends HttpServlet {
                 
                 f.setNome(nome);
                 f.setCor(cor);
-                dao.salvar(f);
-
+                dao.salvar(f); 
                 
-
-                                 
+            out.print( jb.toJson( frutas.getTodos() ) );
 
             } 
+            
+            
+            
         } catch (SQLException e) {
 
         }
+      
          
         
         

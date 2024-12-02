@@ -17,8 +17,8 @@
 
 body{
     margin: 0;
-    overflow: hidden;
     font-family: "Parkinsans", sans-serif;
+    overflow: hidden;
 }
 
 .navbar a{
@@ -43,6 +43,7 @@ body{
 
 .lado-esquerdo {
   width: 30vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,11 +62,14 @@ body{
 
 .exemploDIV{
 
-  height: 70%;
-  width: 70%;
   background-color: rgb(255, 255, 255); 
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.062);
-
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  
     
 }
 
@@ -107,13 +111,20 @@ body{
 
 
 .listagem {
-    border: solid thin #006699;
-    background-color: #ffa800;
-    margin-bottom: 5px;
+    width: 80%;
+    border-radius: 10px 10px;
+    background-color: #7b57ff;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+      box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.062);
+    
 }
 
 .listagem p {
     margin: 0px;
+    padding: 10px
+    
 }
 
 /* seleção da primeira tag <p> filha do elemento
@@ -128,9 +139,5 @@ body{
  */
 .listagem p:nth-child(2) {
     background-color: #248bff;
-}
-
-/* já deu para entender, não é? */
-.listagem p:nth-child(3) {
-    background-color: #0068dd;
+        border-radius: 0px 0px 10px 10px;
 }

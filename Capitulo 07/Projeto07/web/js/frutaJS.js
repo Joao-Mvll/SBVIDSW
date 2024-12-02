@@ -12,7 +12,7 @@ function executarFruta( event ){
         },
         dataType: "json"
     }).done((data,textStatus ) =>{
-        
+        console.log(data); 
         let $div = $( "#exemploDIV" );
         $div.html( "" );
         

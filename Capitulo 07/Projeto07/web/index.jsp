@@ -51,7 +51,7 @@
 
     <div class="lado-direito">
 
-        <div class="exemploDIV">
+        <div class="exemploDIV" id="exemploDIV" style=" width: 1000px; height:700px;">
 
         </div>
 
