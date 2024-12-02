@@ -7,6 +7,8 @@ package projeto07.testes;
 import projeto07.entidades.Fruta;
 import projeto07.dao.FrutaDAO;
 import java.sql.SQLException;
+import projeto07.dao.ProdutoDAO;
+import projeto07.entidades.Produto;
 
 /**
  *
@@ -16,18 +18,18 @@ public class testConnection {
     
     public static void main(String[] args) {
         
-        Fruta fruta = new Fruta();
+        Produto produto = new Produto();
         
-        fruta.setNome("banana");
-        fruta.setCor("amarelo");
+        produto.setDescricao("asdhkajsdhas");
+        produto.setQuantidade(12);
         
-        FrutaDAO dao = null;
+        ProdutoDAO dao = null;
         
         try{
                 
-                dao = new FrutaDAO();
+                dao = new ProdutoDAO();
                 
-                dao.salvar(fruta);
+                dao.salvar(produto);
                 
            
 

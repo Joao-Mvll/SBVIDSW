@@ -6,20 +6,21 @@ function executarProduto( event ){
     $.ajax("processaProduto", {
        type: "post",
        data: {
-           descricao = descricao,
-           quantidade = quantidade
+           acao: "inserir",
+           descricao: descricao,
+           quantidade: quantidade
        },
-       dataTyp: "json"
+       dataType: "json"
     }).done((data,textStatus ) =>{
         console.log(data); 
-        let $div = $( "#exemploDIV" );
+        let $div = $( "#exemploProduto" );
         $div.html( "" );
         
         data.forEach( produto => {
             $div.append( 
-                `<div class="listagem">Carro:
-                 <p>Nome: ${produto.descricao}</p>`+
-                `<p>Modelo: ${produto.quantidade}</p>`);
+                `<div class="listagem">Produto:
+                 <p>Descricao: ${produto.descricao}</p>`+
+                `<p>Quantidade: ${produto.quantidade}</p>`);
         });
         
     }).fail( ( jqXHR, textStatus, errorThrown ) => {

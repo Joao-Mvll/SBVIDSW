@@ -6,7 +6,7 @@ function executarCarro( event ){
     let ano = Number(prompt("Diga o ano do carro"));
     
     $.ajax("processaCarro", {
-        type: "POST",
+        type: "post",
         data: {
             acao: "inserir",
             nome: nome,
@@ -14,10 +14,9 @@ function executarCarro( event ){
             ano: ano   
         },
         dataType: "json"
-
     }).done((data,textStatus ) =>{
         console.log(data); 
-        let $div = $( "exemploCarro" );
+        let $div = $( "#exemploCarro" );
         $div.html( "" );
         
         data.forEach( carro => {

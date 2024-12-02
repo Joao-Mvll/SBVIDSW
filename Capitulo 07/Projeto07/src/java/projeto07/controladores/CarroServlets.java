@@ -38,6 +38,7 @@ public class CarroServlets extends HttpServlet {
         try( PrintWriter out = response.getWriter() ){
             
             dao = new CarroDAO();
+            System.out.println(jb.toJson(carros.getTodos()));
             
             if(acao.equals("inserir")){
                 
